@@ -164,6 +164,11 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
+         * Package for customer php.ini
+         */
+        Mmieluch\LaravelServeCustomIni\LaravelServeCustomIniProvider::class,
+
+        /*
          * Package Service Providers...
          */
 
