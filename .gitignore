@@ -6,3 +6,4 @@ Homestead.json
 Homestead.yaml
 .env
 /php.ini
+composer.phar
