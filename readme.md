@@ -1,27 +1,63 @@
 # Laravel PHP Framework
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+## Installation Campus
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+Votre environnement de développement comprend quelques spécificités et restrictions.
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+Afin de vous permettre de faire fonctionner correctement votre réseau social avec Laravel, nous vous proposons de suivre la procédure suivante.
 
-## Official Documentation
+Lancez un terminal Gitbash  et copier/coller la liste des commandes suivante.
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+### On clone le dépot Git.
 
-## Contributing
+/!\ ici `[REPERTOIRE]` fait référence à votre répertoire projet /!\
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+```
+mkdir [REPERTOIRE]
+cd [REPERTOIRE]
+git clone https://github.com/campus-digital-grenoble/laravel-base.git .
+```
 
-## Security Vulnerabilities
+### Configuration spéciale uWamp/Campus
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+```
+Uwamp='c:\uwamp' # A personnaliser avec le repertoire d'install de uwamp
+sed -e "s/{PHPEXTPATH}/$(echo ${Uwamp} | sed -e 's/[]\/$*.^|[]/\\&/g')\\\bin\\\php\\\php-5.6.18\\\ext/g" -e "s/{APACHEPATH}/$(echo ${Uwamp} | sed -e 's/[]\/$*.^|[]/\\&/g')\\\apache/g" -e "s/{PHPZENDPATH}/$(echo ${Uwamp} | sed -e 's/[]\/$*.^|[]/\\&/g')\\\bin\\\php\\\php-5.6.18\\\zend_ext/g" -e "s/{TEMPPATH}/$(echo ${Uwamp} | sed -e 's/[]\/$*.^|[]/\\&/g')\\\temp/g" -e "s|^;\(date\.timezone[[:space:]]*=\).*|\1 \"Europe/Paris\"|g" ${Uwamp}/bin/php/php-5.6.18/php_uwamp.ini  > php.ini
+echo "alias php='php -c ./php.ini'" >  ~/.bashrc
+echo "alias composer='php ./composer.phar'" >> ~/.bashrc
+echo "export PATH=\$PATH:'${Uwamp}\bin\database\mysql-5.7.11\bin\:${Uwamp}\bin\php\php-5.6.18\'"  >> ~/.bashrc
+source ~/.bashrc
+```
 
-## License
+### Avant d'aller plus loin :
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+Assurer vous que php est correctement configuré pour votre projet
+
+```
+php -i # doit Afficher le phpinfo() sans erreurs;
+```
+
+### Installation de composer
+
+```
+php -r "copy('https://getcomposer.org/composer.phar', 'composer.phar');"
+```
+
+### Installation des package composer
+
+```
+composer install
+```
+
+### Dernière ligne droite
+
+```
+cp .env.example .env
+php artisan key:generate
+```
+
+## Lancer le projet  
+
+```
+php artisan serve --ini
+```
