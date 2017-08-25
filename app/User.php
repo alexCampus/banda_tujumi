@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'lastname', 'firstname', 'nickname', 'email', 'phonenumber', 'instrument', 'adminLevel', 'password',
     ];
 
     /**
@@ -30,5 +30,11 @@ class User extends Authenticatable
     public function events()
     {
         return $this->belongsToMany('App\EventModel');
+    }
+
+    public function getallUsers()
+    {
+        $users = User::all();
+        return $users;
     }
 }

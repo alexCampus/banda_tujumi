@@ -7,24 +7,24 @@
                 <span class="sr-only">Toggle navigation</span>
                 Menu <i class="fa fa-bars"></i>
             </button>
-            @if (Route::has('login'))
-                @if (Auth::check())
-                    <div class="dropdown" >
-                        <button class="btn dropdown-toggle"  data-toggle="dropdown">{{ Auth::user()->name }}
-                        <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
-                        </ul>
-                    </div>
-                        
+           @if (Route::has('login'))
+                    @if (Auth::check())
+                        <div class="dropdown" >
+                            <a class="btn dropdown-toggle"  data-toggle="dropdown">{{ Auth::user()->nickname }}
+                            <span class="caret"></span>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+                            </ul>
+                        </div>
+                            
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
-                @else
-                    <button  class="btn dropdown-toggle" onclick="window.location.href='/login'">Se Connecter</button>
-                        
-                        <!-- <a href="{{ url('/register') }}">Register</a> -->
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
+                    @else
+                        <a class="btn dropdown-toggle" onclick="window.location.href='/login'">Se Connecter</a>
+                            
+                            <!-- <a href="{{ url('/register') }}">Register</a> -->
+                    @endif
                 @endif
-            @endif
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -48,6 +48,11 @@
                 <li>
                     <a href="/contact">Contact</a>
                 </li>
+                @if(Auth::check() && Auth::user()->adminLevel === 3)
+                    <li>
+                        <a href="/adminUser">Admin User</a>
+                    </li>
+                @endif
             </ul>
         </div>
         <!-- /.navbar-collapse -->

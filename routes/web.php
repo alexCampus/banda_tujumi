@@ -38,4 +38,10 @@ Route::post('/{id}/desinscription', 'EventController@desinscription')->where('id
 Route::get('/contact', function() {
 	return view('contact', array('imageUrl' => 'img/contact.JPG'));
 });
+
+Route::get('/adminUser', 'AdminController@index');
+Route::get('/upGradeAdminLevel', 'AdminController@upGradeAdminLevel');
+Route::get('/downGradeAdminLevel', 'AdminController@downGradeAdminLevel');
+	# code...
+
 //Route::get('/home', 'HomeController@index')->name('home');

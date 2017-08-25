@@ -1,11 +1,12 @@
 @extends('layout.app')
 @section('imageUrl', $imageUrl)
 @section('content')
-	<h1>Agenda</h1>
 	<div class="container">
-		<form method="GET" action="/createEvent">	
-			<button><i class="fa fa-plus-square" aria-hidden="true"></i></button>			
-		</form>
+		@if (Auth::check() && Auth::user()->adminLevel > 0)
+			<ul class="nav nav-pills pull-right" >
+	  			<li role="presentation" ><a href="/createEvent"><i class="fa fa-plus" aria-hidden="true"> Evènement</i></a></li>
+			</ul>
+		@endif
 		<div >
 			{!! $calendar->calendar() !!}
     		{!! $calendar->script() !!}	

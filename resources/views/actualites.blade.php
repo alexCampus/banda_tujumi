@@ -1,10 +1,12 @@
 @extends('layout.app')
 @section('imageUrl', $imageUrl)
 @section('content')
-	<h1 style="text-align: center">Actualités</h1>
-	<form method="GET" action="/createNews">
-		<button class="btn btn-primary">Nouvelle News</button>
-	</form>
+	<h2 style="text-align: center">Actualités</h2>
+		@if (Auth::check() && Auth::user()->adminLevel > 0)
+			<ul class="nav nav-pills pull-right" >
+	  			<li role="presentation" ><a href="/createNews"><i class="fa fa-plus" aria-hidden="true"> News</i></a></li>
+			</ul>
+		@endif
 	<hr>
 	<article>
         <div class="container">
@@ -22,5 +24,4 @@
         </div>
     </article>
 
-    <hr>
 @endsection

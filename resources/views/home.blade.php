@@ -22,7 +22,18 @@
                     <h4>Actualités</h4>
                     <div class="row">
                         <div class="post-preview">
-                           
+                            @foreach($news as $new)
+                                <a href="/actualites">
+                                    <h5>{{$new->title}}</h5>
+                                    <small><em>
+                                        @php
+                                            echo substr($new->content,0,70)
+                                        @endphp
+                                        ....
+                                    </em></small>
+                                </a>
+                                <hr>
+                           @endforeach
                                 
                         </div>
                     </div>

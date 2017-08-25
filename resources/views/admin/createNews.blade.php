@@ -1,7 +1,8 @@
 @extends('layout.app')
-
+@section('imageUrl', 'img/actu.jpg')
 @section('content')
 <div class="container">
+<h2 style="text-align: center">Nouvelle Actualité</h2>
 	<form name="createNews" method="POST" action="/createNews">
 	{!! csrf_field() !!}
         <div class="row control-group">

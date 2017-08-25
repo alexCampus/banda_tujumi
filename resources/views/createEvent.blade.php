@@ -1,8 +1,8 @@
 @extends('layout.app')
-
+@section('imageUrl', 'img/event.JPG')
 @section('content')
-	<h1>CreateEvent</h1>
 	<div class="container">
+    <h2 style="text-align: center">Nouvel Evènement</h2>
 	<form name="createEvent" method="POST" action="/createEvent">
 	{!! csrf_field() !!}
         <div class="row control-group">

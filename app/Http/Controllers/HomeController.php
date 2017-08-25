@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\News;
 class HomeController extends Controller
 {
     /**
@@ -19,6 +19,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home', array('imageUrl' => 'img/accueil.jpg'));
+        $newsModel =  new News;
+        $news = $newsModel->getAllNews();
+        return view('home', array('imageUrl' => 'img/accueil.jpg', 'news' =>$news));
     }
 }
