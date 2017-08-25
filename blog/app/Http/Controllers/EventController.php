@@ -33,8 +33,6 @@ class EventController extends Controller
 		$calendar = \Calendar::addEvents($events)
 				->setOptions([ //set fullcalendar options
 			'header' => array('left' => 'prev,next today', 'center' => 'title', 'right' => ''),
-
-			'locale' => 'fr',
             'editable'=> true,
             'navLinks'=> true,
             'selectable'  => true,
@@ -45,6 +43,6 @@ class EventController extends Controller
 		    
 
 
-		return view('agenda', array('calendar' => $calendar));
+		return view('agenda', array('calendar' => $calendar, 'imageUrl' => 'img/event.JPG'));
 	}
 }

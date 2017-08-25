@@ -18,7 +18,7 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/presentation', function() {
-	return view('about');
+	return view('about', array('imageUrl' => 'img/Tujumi.jpg'));
 });
 
 Route::get('/actualites', 'NewsController@index');
@@ -26,12 +26,12 @@ Route::get('/createNews', 'NewsController@create');
 Route::post('/createNews', 'NewsController@store');
 
 Route::get('/medias', function() {
-	return view('medias');
+	return view('medias', array('imageUrl' => 'img/galerie-grp.jpg'));
 });
 
 Route::get('/agenda', 'EventController@index');
 
 Route::get('/contact', function() {
-	return view('contact');
+	return view('contact', array('imageUrl' => 'img/contact.JPG'));
 });
 //Route::get('/home', 'HomeController@index')->name('home');

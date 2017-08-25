@@ -11,7 +11,7 @@ class NewsController extends Controller
     public function index() {
     	$news =  new News;
     	
-    	return view('actualites', ['news' => $news->getAllNews()]);
+    	return view('actualites', ['news' => $news->getAllNews(), 'imageUrl' => 'img/actu.jpg']);
     }
 
     public function create() {
