@@ -59,7 +59,7 @@ class EventController extends Controller
 		    
 
 
-		return view('agenda', array('calendar' => $calendar));
+		return view('agenda', array('calendar' => $calendar, 'imageUrl' => 'img/event.JPG'));
 	}
 
 	public function formCreate() 

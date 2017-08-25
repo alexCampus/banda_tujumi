@@ -11,8 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/presentation', function() {
+	return view('about', array('imageUrl' => 'img/Tujumi.jpg'));
+});
+
+Route::get('/actualites', 'NewsController@index');
+Route::get('/createNews', 'NewsController@create');
+Route::post('/createNews', 'NewsController@store');
+
+Route::get('/medias', function() {
+	return view('medias', array('imageUrl' => 'img/galerie-grp.jpg'));
 });
 
 Route::get('/agenda', 'EventController@index');
@@ -21,8 +35,7 @@ Route::get('/createEvent', 'EventController@formCreate');
 Route::post('/createEvent', 'EventController@store');
 Route::post('/{id}/participe', 'EventController@participe')->where('id', '[0-9]+');
 Route::post('/{id}/desinscription', 'EventController@desinscription')->where('id', '[0-9]+');
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index');
+Route::get('/contact', function() {
+	return view('contact', array('imageUrl' => 'img/contact.JPG'));
+});
+//Route::get('/home', 'HomeController@index')->name('home');
