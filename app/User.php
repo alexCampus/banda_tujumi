@@ -27,6 +27,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $table = 'users_banda_tujumi';
+
     public function events()
     {
         return $this->belongsToMany('App\EventModel');

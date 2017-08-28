@@ -23,8 +23,9 @@
          {{$event->content}}
       </div>
       <div class="panel-footer">
-          <small>Heure de début :</small> le {{ \Carbon\Carbon::parse($event->start_time)->format('d/m/Y \\à h:i')}}<br>
-          <small>Heure de Fin :</small> le {{ \Carbon\Carbon::parse($event->end_time)->format('d/m/Y \\à h:i')}}
+      <a class="pull-right" href="/updateEvent/{{$event->id}}" style="color:#a8534b"><i class="fa fa-plus" aria-hidden="true"> Mettre a Jour</i></a></li>
+          <small>Heure de début :</small> le {{ \Carbon\Carbon::parse($event->start_time)->format('d/m/Y \\à H:i')}}<br>
+          <small>Heure de Fin :</small> le {{ \Carbon\Carbon::parse($event->end_time)->format('d/m/Y \\à H:i')}}<br>
       </div>
 
     </div>
@@ -40,6 +41,7 @@
                 <th>Nom</th>
                 <th>Prénom</th>
                 <th>Surnom</th>
+                <th>Instrument</th>
               </tr>
             </thead>
           @foreach( $event->users as $user)
@@ -48,6 +50,7 @@
                     <td>{{$user->lastname}}</td>
                     <td>{{$user->firstname}}</td>
                     <td>{{$user->nickname}}</td>
+                    <td>{{$user->instrument}}</td>
                   </tr>
                 </tbody>
             @endforeach

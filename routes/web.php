@@ -22,8 +22,10 @@ Route::get('/presentation', function() {
 });
 
 Route::get('/actualites', 'NewsController@index');
-Route::get('/createNews', 'NewsController@create');
-Route::post('/createNews', 'NewsController@store');
+Route::get('/createNews', 'NewsController@create')->middleware('auth');
+Route::post('/createNews', 'NewsController@store')->middleware('auth');
+Route::get('/updateNews/{id}', 'NewsController@viewUpdate')->where('id', '[0-9]+')->middleware('auth');
+Route::post('/updateNews/{id}', 'NewsController@update')->where('id', '[0-9]+')->middleware('auth');
 
 Route::get('/medias', function() {
 	return view('medias', array('imageUrl' => 'img/galerie-grp.jpg'));
@@ -31,17 +33,19 @@ Route::get('/medias', function() {
 
 Route::get('/agenda', 'EventController@index');
 Route::get('/agenda/{id}', 'EventController@show')->where('id', '[0-9]+');
-Route::get('/createEvent', 'EventController@formCreate');
-Route::post('/createEvent', 'EventController@store');
-Route::post('/{id}/participe', 'EventController@participe')->where('id', '[0-9]+');
-Route::post('/{id}/desinscription', 'EventController@desinscription')->where('id', '[0-9]+');
+Route::get('/createEvent', 'EventController@formCreate')->middleware('auth');
+Route::post('/createEvent', 'EventController@store')->middleware('auth');
+Route::post('/{id}/participe', 'EventController@participe')->where('id', '[0-9]+')->middleware('auth');
+Route::post('/{id}/desinscription', 'EventController@desinscription')->where('id', '[0-9]+')->middleware('auth');
+Route::get('/updateEvent/{id}', 'EventController@updateView')->where('id', '[0-9]+')->middleware('auth');
+Route::post('/updateEvent/{id}', 'EventController@update')->where('id', '[0-9]+')->middleware('auth');
+
 Route::get('/contact', function() {
 	return view('contact', array('imageUrl' => 'img/contact.JPG'));
 });
 
-Route::get('/adminUser', 'AdminController@index');
-Route::get('/upGradeAdminLevel', 'AdminController@upGradeAdminLevel');
-Route::get('/downGradeAdminLevel', 'AdminController@downGradeAdminLevel');
-	# code...
+Route::get('/adminUser', 'AdminController@index')->middleware('auth');
+Route::get('/upGradeAdminLevel', 'AdminController@upGradeAdminLevel')->middleware('auth');
+Route::get('/downGradeAdminLevel', 'AdminController@downGradeAdminLevel')->middleware('auth');
 
-//Route::get('/home', 'HomeController@index')->name('home');
+

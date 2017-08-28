@@ -1,44 +1,41 @@
 @extends('layout.app')
-@section('imageUrl', 'img/event.JPG')
+@section('imageUrl', '../img/event.JPG')
 @section('content')
 	<div class="container">
-    <h2 style="text-align: center">Nouvel Evènement</h2>
-	<form name="createEvent" method="POST" action="/createEvent">
+    @if(isset($event))
+       <h2 style="text-align: center">Mise à Jour Evènement</h2>
+       <form name="updateEvent" method="POST" action="/updateEvent/{{$event->id}}">
+    @else
+        <h2 style="text-align: center">Nouvel Evènement</h2>
+	   <form name="createEvent" method="POST" action="/createEvent">
+    @endif
 	{!! csrf_field() !!}
         <div class="row control-group">
             <div class="form-group col-xs-12 floating-label-form-group controls">
                 <label>Titre</label>
-                <input type="text" class="form-control" placeholder="Titre" name="title" required="true">
+                <input type="text" class="form-control" placeholder="Titre" name="title" required="true" value="{{ isset($event->title) ? $event->title : ''}}">
                 <p class="help-block text-danger"></p>
             </div>
         </div>
         <div class="row control-group">
             <div class="form-group col-xs-12 floating-label-form-group controls">
                 <label>Contenu</label>
-                <textarea rows="4" cols="50" name="content" class="form-control" placeholder="Contenu"  required="true"></textarea> 
+                <textarea rows="4" cols="50" name="content" class="form-control" placeholder="Contenu"  required="true">{{ isset($event->content) ? $event->content : ''}}</textarea> 
                 <p class="help-block text-danger"></p>
             </div>
         </div>
-
-        <div class="row control-group">
-            <div class="form-group col-xs-12 controls">
-               <label><input type="checkbox" value="true" name="fullDay"> Jour Entier</label>
-                <p class="help-block text-danger"></p>
-            </div>
-        </div>
-
 
         <div class="row control-group"> 
             	<label>Date et heure de début</label>
             <div class='input-group date col-sm-4' id='datetimepicker2'>
-                <input type='text' class="form-control" name="startTime"/>
+                <input type='text' class="form-control" name="startTime" value="{{ isset($event->start_time) ? \Carbon\Carbon::parse($event->start_time)->format('d/m/Y \\à H:i') : ''}}" />
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
             </div>
              	<label>Date et heure de fin</label>
              <div class='input-group date col-sm-4' id='datetimepicker'>
-                <input type='text' class="form-control" name="endTime" />
+                <input type='text' class="form-control" name="endTime" value="{{ isset($event->end_time) ? \Carbon\Carbon::parse($event->end_time)->format('d/m/Y \\à H:i') : ''}}" />
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>

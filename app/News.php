@@ -19,4 +19,9 @@ class News extends Model
     	$news = News::all()->sortByDesc("date");
     	return $news;
     }
+
+    public function getOneNews($id) {
+        $news = News::find($id);
+        return $news;
+    }
 }
