@@ -34,9 +34,8 @@ class EventController extends Controller
 					'header'      => array('left' => 'prev,next today', 'center' => 'title', 'right' => ''),
 		            'editable'    => true,
 		            'navLinks'    => true,
-		            'selectable'  => true,
+		            'selectable'  => false,
 		            'defaultView' => 'month',
-		            
 				]);  //add an array with addEvents
 		    
 

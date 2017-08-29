@@ -1,15 +1,15 @@
 @extends('layout.app')
 @section('imageUrl', $imageUrl)
 @section('content')
-	<h2 style="text-align: center">Actualités</h2>
+	<div class="container">
+		<h2 style="text-align: center">Actualités</h2>
 		@if (Auth::check() && Auth::user()->adminLevel > 0)
 			<ul class="nav nav-pills pull-right" >
 	  			<li role="presentation" ><a href="/createNews"><i class="fa fa-plus" aria-hidden="true"> News</i></a></li>
 			</ul>
 		@endif
-	<hr>
-	<article>
-        <div class="container">
+		<hr>
+		<article>
             <div class="row">
                 <div class="col-lg-6 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="post-preview">
@@ -22,7 +22,8 @@
 					@endforeach
                     </div>
                 </div>
-        </div>
-    </article>
+            </div>
+    	</article>
+    </div>
 
 @endsection

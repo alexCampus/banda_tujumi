@@ -27,8 +27,8 @@
                 <td>{{$user->phonenumber}}</td>
                 <td>{{$user->instrument}}</td>
                 <td>{{$user->adminLevel}}</td>
-                <td><a href="/upGradeAdminLevel"><i class="fa fa-plus" aria-hidden="true"></i></a></td>
-                <td><a href="/downGradeAdminLevel"><i class="fa fa-minus" aria-hidden="true"></i></a></td>
+                <td><a href="/upGradeAdminLevel/{{$user->id}}"><i class="fa fa-plus" aria-hidden="true"></i></a></td>
+                <td><a href="/downGradeAdminLevel/{{$user->id}}"><i class="fa fa-minus" aria-hidden="true"></i></a></td>
               </tr>
             </tbody>
         @endforeach

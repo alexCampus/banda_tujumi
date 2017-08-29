@@ -9,6 +9,7 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $table = 'users_banda_tujumi';
     /**
      * The attributes that are mass assignable.
      *
@@ -27,7 +28,6 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    protected $table = 'users_banda_tujumi';
 
     public function events()
     {

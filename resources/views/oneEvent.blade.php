@@ -23,7 +23,7 @@
          {{$event->content}}
       </div>
       <div class="panel-footer">
-      <a class="pull-right" href="/updateEvent/{{$event->id}}" style="color:#a8534b"><i class="fa fa-plus" aria-hidden="true"> Mettre a Jour</i></a></li>
+      <a class="pull-right" href="/updateEvent/{{$event->id}}" style="color:#a8534b"><i class="fa fa-plus" aria-hidden="true"> Mettre a Jour</i></a>
           <small>Heure de début :</small> le {{ \Carbon\Carbon::parse($event->start_time)->format('d/m/Y \\à H:i')}}<br>
           <small>Heure de Fin :</small> le {{ \Carbon\Carbon::parse($event->end_time)->format('d/m/Y \\à H:i')}}<br>
       </div>

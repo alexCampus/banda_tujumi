@@ -19,19 +19,18 @@ class AdminController extends Controller
     	return view('admin.adminUser', ['users' => $users]);
     }
 
-    public function upGradeAdminLevel()
+    public function upGradeAdminLevel($id)
     {
     	
-    	$user = Auth::user();
+        $user = User::find($id);
     	$user->adminLevel += 1;
     	$user->save();
     	return redirect('/adminUser');
     }
 
-    public function downGradeAdminLevel()
+    public function downGradeAdminLevel($id)
     {
-    	
-    	$user = Auth::user();
+    	$user = User::find($id);
     	$user->adminLevel -= 1;
     	$user->save();
     	return redirect('/adminUser');

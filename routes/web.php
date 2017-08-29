@@ -41,8 +41,8 @@ Route::get('/contact', function() {
 });
 
 Route::get('/adminUser', 'AdminController@index')->middleware('auth');
-Route::get('/upGradeAdminLevel', 'AdminController@upGradeAdminLevel')->middleware('auth');
-Route::get('/downGradeAdminLevel', 'AdminController@downGradeAdminLevel')->middleware('auth');
+Route::get('/upGradeAdminLevel/{id}', 'AdminController@upGradeAdminLevel')->where('id', '[0-9]+')->middleware('auth');
+Route::get('/downGradeAdminLevel/{id}', 'AdminController@downGradeAdminLevel')->where('id', '[0-9]+')->middleware('auth');
 
 Route::get('/medias', 'ImagesController@index');	
 Route::get('/uploadImages', 'ImagesController@uploadView')->middleware('auth');
