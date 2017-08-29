@@ -13,4 +13,6 @@
 <script src="{{ asset('js/clean-blog.min.js') }}"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 <script src="{{ asset('js/jquery.simplecolorpicker.js')}}"></script>
+<!-- <script src="{{ asset('js/blueimp-gallery.min.js') }}"></script> -->
+<script src="{{ asset('js/jquery.blueimp-gallery.min.js') }}"></script>
 

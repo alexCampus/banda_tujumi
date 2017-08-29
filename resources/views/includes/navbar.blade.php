@@ -39,9 +39,9 @@
                 <li>
                     <a href="/actualites">Actualités</a>
                 </li>
-                <!-- <li>
+                <li>
                     <a href="/medias">Médias</a>
-                </li> -->
+                </li>
                 <li>
                     <a href="/agenda">Agenda</a>
                 </li>

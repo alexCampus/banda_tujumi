@@ -1,5 +1,38 @@
 @extends('layout.app')
 @section('imageUrl', $imageUrl)
 @section('content')
-	<h1>Médias</h1>
+	<div class="container">
+		<h2 style="text-align: center">Médias</h2>
+		<hr>
+		@if (Auth::check() && Auth::user()->adminLevel > 0)
+	   			<a class="pull-right" href="/uploadImages" style="color:#a8534b"><i class="fa fa-plus" aria-hidden="true"> Upload</i></a>
+	   	@endif
+		
+		<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+		    <div class="slides"></div>
+		    <h3 class="title"></h3>
+		    <a class="prev">‹</a>
+		    <a class="next">›</a>
+		    <a class="play-pause"></a>
+		    <ol class="indicator"></ol>
+		</div>
+		<div id="links">
+			@foreach($images as $image)
+		     	<a href='storage/{{ $image->categorie }}/{{ $image->name }}' title="{{ $image->title }}">
+		        	<img src="storage/{{ $image->categorie }}/{{ $image->name }}" alt="{{ $image->title }}" style="max-height:100px">
+		    	</a>
+		    @endforeach
+		</div>
+		<script>
+		document.getElementById('links').onclick = function (event) {
+	    event = event || window.event;
+	    var target = event.target || event.srcElement,
+	        link = target.src ? target.parentNode : target,
+	        options = {index: link, event: event},
+	        links = this.getElementsByTagName('a');
+	    blueimp.Gallery(links, options);
+		};
+
+		</script>
+	</div>
 @endsection

@@ -25,12 +25,14 @@
 <link rel="stylesheet" href="{{ asset('css/jquery.simplecolorpicker-regularfont.css') }}">
 <link rel="stylesheet" href="{{ asset('css/jquery.simplecolorpicker-glyphicons.css') }}">
 <link rel="stylesheet" href="{{ asset('css/jquery.simplecolorpicker-fontawesome.css') }}">
+<link rel="stylesheet" href="{{ asset('css/blueimp-gallery.min.css') }}">
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
 <script type="text/javascript" src="{{ asset('js/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('js/fr.js') }}"></script>
+
 
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

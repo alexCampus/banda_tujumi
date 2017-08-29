@@ -27,10 +27,6 @@ Route::post('/createNews', 'NewsController@store')->middleware('auth');
 Route::get('/updateNews/{id}', 'NewsController@viewUpdate')->where('id', '[0-9]+')->middleware('auth');
 Route::post('/updateNews/{id}', 'NewsController@update')->where('id', '[0-9]+')->middleware('auth');
 
-Route::get('/medias', function() {
-	return view('medias', array('imageUrl' => 'img/galerie-grp.jpg'));
-});
-
 Route::get('/agenda', 'EventController@index');
 Route::get('/agenda/{id}', 'EventController@show')->where('id', '[0-9]+');
 Route::get('/createEvent', 'EventController@formCreate')->middleware('auth');
@@ -47,5 +43,10 @@ Route::get('/contact', function() {
 Route::get('/adminUser', 'AdminController@index')->middleware('auth');
 Route::get('/upGradeAdminLevel', 'AdminController@upGradeAdminLevel')->middleware('auth');
 Route::get('/downGradeAdminLevel', 'AdminController@downGradeAdminLevel')->middleware('auth');
+
+Route::get('/medias', 'ImagesController@index');	
+Route::get('/uploadImages', 'ImagesController@uploadView')->middleware('auth');
+Route::post('/uploadImages', 'ImagesController@store')->middleware('auth');
+
 
 
