@@ -49,7 +49,7 @@ class AdminController extends Controller
 
         $id = $tokenRegister->getId();
         $url ="http://localhost:8000/register?token=" . $token . "&id=" . $id;
-        Mail::send('email.send', ['url' => $url], function($message) use ($email)
+        Mail::send('email.sendToken', ['url' => $url], function($message) use ($email)
         {
             $message->from('contact@bandatujumi.fr', 'Banda Tujumi');
             $message->to($email);

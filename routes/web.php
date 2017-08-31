@@ -36,9 +36,8 @@ Route::post('/{id}/desinscription', 'EventController@desinscription')->where('id
 Route::get('/updateEvent/{id}', 'EventController@updateView')->where('id', '[0-9]+')->middleware('auth');
 Route::post('/updateEvent/{id}', 'EventController@update')->where('id', '[0-9]+')->middleware('auth');
 
-Route::get('/contact', function() {
-	return view('contact', array('imageUrl' => 'img/contact.JPG'));
-});
+Route::get('/contact', 'ContactController@index');
+Route::post('/contact', 'ContactController@send');
 
 Route::get('/adminUser', 'AdminController@index')->middleware('auth');
 Route::get('/upGradeAdminLevel/{id}', 'AdminController@upGradeAdminLevel')->where('id', '[0-9]+')->middleware('auth');

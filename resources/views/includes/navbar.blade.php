@@ -10,7 +10,12 @@
            @if (Route::has('login'))
                     @if (Auth::check())
                         <div class="dropdown" >
-                            <a class="btn dropdown-toggle"  data-toggle="dropdown">{{ Auth::user()->nickname }}
+                            <a class="btn dropdown-toggle"  data-toggle="dropdown">
+                            @if( Auth::user()->nickname ) 
+                                    {{ Auth::user()->nickname }}
+                            @else 
+                                    {{ Auth::user()->firstname }}
+                            @endif
                             <span class="caret"></span>
                             <ul class="dropdown-menu">
                                 <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>

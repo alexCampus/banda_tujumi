@@ -17,10 +17,10 @@ class CreateUsersBandaTujumiTable extends Migration
             $table->increments('id');
             $table->string('firstname');
             $table->string('lastname');
-            $table->string('nickname');
+            $table->string('nickname')->nullable();
             $table->string('email')->unique();
             $table->integer('phonenumber');
-            $table->string('instrument');
+            $table->string('instrument')->nullable();
             $table->integer('adminLevel')->default('0');
             $table->string('password');
             $table->rememberToken();
