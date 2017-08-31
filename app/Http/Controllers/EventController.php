@@ -59,6 +59,9 @@ class EventController extends Controller
     	$event->start_time      = Carbon::createFromFormat('d/m/Y H:i', $request->input('startTime'))->format('Y-m-d H:i');
     	$event->end_time        = Carbon::createFromFormat('d/m/Y H:i', $request->input('endTime'))->format('Y-m-d H:i');
     	$event->backgroundColor = $request->input('color');
+    	$event->categorie 	 	= $request->input('categorie');
+
+
     	$event->save();	
 		return redirect('/agenda');
 	}

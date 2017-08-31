@@ -33,6 +33,12 @@
             </tbody>
         @endforeach
     </table>
+    <form action="/newUser" method="POST">
+        {!! csrf_field() !!}
+        <label>New User</label>
+        <input type="email" name="email" placeholder="email" required>
+        <button class="btn-sm btn-default" type="submit">Submit</button>
+    </form>
 </div>
 	               
 @endsection

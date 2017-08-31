@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
+use App\TokenRegister;
+use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
 {
@@ -34,5 +36,26 @@ class AdminController extends Controller
     	$user->adminLevel -= 1;
     	$user->save();
     	return redirect('/adminUser');
+    }
+
+    public function newUser(Request $request)
+    {
+        $token         = str_random(60);
+        $email         = $request->input('email'); 
+        $tokenRegister = new TokenRegister;
+        $tokenRegister->token = $token;
+        $tokenRegister->email = $email;
+        $tokenRegister->save();
+
+        $id = $tokenRegister->getId();
+        $url ="http://localhost:8000/register?token=" . $token . "&id=" . $id;
+        Mail::send('email.send', ['url' => $url], function($message) use ($email)
+        {
+            $message->from('contact@bandatujumi.fr', 'Banda Tujumi');
+            $message->to($email);
+            $message->subject('Creation de votre compte sur le site banda tujumi');
+        });
+
+        return redirect('/adminUser');
     }
 }

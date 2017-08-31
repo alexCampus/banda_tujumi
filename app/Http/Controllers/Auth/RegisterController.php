@@ -6,7 +6,9 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Request;
+use App\TokenRegister;
+use Illuminate\Http\Request;
+
 class RegisterController extends Controller
 {
     /*
@@ -34,9 +36,40 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Request $request)
     {
-        $this->middleware('guest');
+        $method = $request->method();
+        
+        if ($request->isMethod('post')) {
+            $this->middleware('guest'); 
+        }
+
+        if ($request->isMethod('get')) {
+            $url       = $request->fullUrl();      
+            $query     = explode('&',parse_url($url, PHP_URL_QUERY)); 
+
+            if ($query[0] != "") {
+                $id        = explode('=', $query[0]);
+                $token     = explode('=', $query[1]);
+
+                $tokenUser = TokenRegister::find($id[1]);
+
+                if ($tokenUser === null) {
+                    $this->middleware('auth');
+                    return redirect('/');
+                }
+               
+                if ($id[1] === strval($tokenUser->id) && $token[1] === $tokenUser->token) {
+                    $this->middleware('guest');
+                    $tokenUser->delete();
+                } else {
+                   $this->middleware('auth'); 
+                }
+            }
+            else {
+                $this->middleware('auth'); 
+            }
+        }       
     }
    
     /**
@@ -62,8 +95,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
-       // dump(Request::fullUrl());die;
         return User::create([
             'lastname' => $data['lastname'],
             'firstname' => $data['firstname'],

@@ -28,14 +28,14 @@
         <div class="row control-group"> 
             	<label>Date et heure de début</label>
             <div class='input-group date col-sm-4' id='datetimepicker2'>
-                <input type='text' class="form-control" name="startTime" value="{{ isset($event->start_time) ? \Carbon\Carbon::parse($event->start_time)->format('d/m/Y \\à H:i') : ''}}" />
+                <input type='text' class="form-control" name="startTime" value="{{ isset($event->start_time) ? \Carbon\Carbon::parse($event->start_time)->format('d/m/Y \\à H:i') : ''}}" required />
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
             </div>
              	<label>Date et heure de fin</label>
              <div class='input-group date col-sm-4' id='datetimepicker'>
-                <input type='text' class="form-control" name="endTime" value="{{ isset($event->end_time) ? \Carbon\Carbon::parse($event->end_time)->format('d/m/Y \\à H:i') : ''}}" />
+                <input type='text' class="form-control" name="endTime" value="{{ isset($event->end_time) ? \Carbon\Carbon::parse($event->end_time)->format('d/m/Y \\à H:i') : ''}}" required />
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
@@ -69,11 +69,21 @@
 		        <option value="#e1e1e1">Gray</option>
 		    </select>
 		</div>
-<script type="text/javascript">
-	$(function () {
-	 	$('#colorpicker').simplecolorpicker({theme: 'glyphicons'});
-	 });
-</script>
+        <script type="text/javascript">
+        	$(function () {
+        	 	$('#colorpicker').simplecolorpicker({theme: 'glyphicons'});
+        	 });
+        </script>
+        <div class="row control-group">
+            <div class='input-group date col-sm-4'>
+                <label for="sel1">Catégorie :</label>
+                <select name="categorie" class="form-control required">
+                    <option value="cours">Cours</option>
+                    <option value="prestation">Prestation</option>
+                    <option value="evenement_special">Evènement Spécial</option>
+                </select>
+            </div>
+        </div>
         <br>
         <div id="success"></div>
         <div class="row">
