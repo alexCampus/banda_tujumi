@@ -15,7 +15,7 @@
                     </div>
                 </div>
 				<div class="col-md-12">
-					<input type="file" name="image" />
+					<input type="file" name="image" required/>
 				</div>
 				<div class="col-md-12">
 					<button type="submit" class="btn-sm btn-success">Upload</button>

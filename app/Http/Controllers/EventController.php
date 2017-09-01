@@ -60,16 +60,16 @@ class EventController extends Controller
     	$event->backgroundColor = $request->input('color');
     	$event->categorie 	 	= $request->input('categorie');
 
-
-    	$event->save();	
+    	$event->save();
 		return redirect('/agenda');
 	}
 
 	public function show($id)
 	{
-		$eventModel = new EventModel;
-		$event = $eventModel->getOneEvent($id);
-		$user  = Auth::user();
+		$eventModel  = new EventModel;
+		$event       = $eventModel->getOneEvent($id);
+		$user        = Auth::user();
+		$currentDate = Carbon::now();
 		if ($event->users->contains($user))
 		{
   			$bool = true;
@@ -77,7 +77,7 @@ class EventController extends Controller
 		} else {
 			$bool = false;
 		}
-		return view('oneEvent', ['event' => $event, 'bool' => $bool]);
+		return view('oneEvent', ['event' => $event, 'bool' => $bool, 'currentDate' => $currentDate]);
 	}
 
 	public function participe($id)
