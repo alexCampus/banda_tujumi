@@ -16,6 +16,7 @@
                             @else 
                                     {{ Auth::user()->firstname }}
                             @endif
+                            </a>
                             <span class="caret"></span>
                             <ul class="dropdown-menu colorBlack">
                                 <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
@@ -29,7 +30,7 @@
                             
                     @endif
                 @endif
-        </div>
+        
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -63,6 +64,7 @@
             </ul>
         </div>
         <!-- /.navbar-collapse -->
+    </div>
     </div>
     <!-- /.container -->
 </nav>
