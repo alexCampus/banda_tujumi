@@ -10,14 +10,14 @@
            @if (Route::has('login'))
                     @if (Auth::check())
                         <div class="dropdown" >
-                            <a class="btn dropdown-toggle"  data-toggle="dropdown">
+                            <a class="btn dropdown-toggle colorBlack"  data-toggle="dropdown">
                             @if( Auth::user()->nickname ) 
                                     {{ Auth::user()->nickname }}
                             @else 
                                     {{ Auth::user()->firstname }}
                             @endif
                             <span class="caret"></span>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu colorBlack">
                                 <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
                             </ul>
                         </div>
@@ -25,9 +25,8 @@
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
                     @else
-                        <a class="btn dropdown-toggle" onclick="window.location.href='/login'">Se Connecter</a>
+                        <a class="btn dropdown-toggle colorBlack" onclick="window.location.href='/login'">Se Connecter</a>
                             
-                            <!-- <a href="{{ url('/register') }}">Register</a> -->
                     @endif
                 @endif
         </div>
@@ -46,6 +45,9 @@
                 </li>
                 <li>
                     <a href="/medias">Médias</a>
+                </li>
+                <li>
+                    <a href="/prestation">Prestations</a>
                 </li>
                 <li>
                     <a href="/agenda">Agenda</a>

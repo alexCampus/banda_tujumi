@@ -28,7 +28,6 @@ class EventController extends Controller
 				] //optionally, you can specify an event ID
 			);
 		}
-		// dump($eventsCalendar);die; 
 		$calendar   = \Calendar::addEvents($eventsCalendar)
 				->setOptions([ //set fullcalendar options
 					'header'      => array('left' => 'prev,next today', 'center' => 'title', 'right' => ''),

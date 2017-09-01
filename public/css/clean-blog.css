@@ -75,7 +75,11 @@ div .dropdown-toggle {
   margin-top:3%;
   color:#FFFFFF; 
 }
-
+@media only screen and (max-width: 500px) {
+  .colorBlack {
+    color: #7c7f84;
+  }
+}
 @media only screen and (max-width: 1025px) { /* Remplacez 123px par la taille de votre choix */
   
   .navbar-custom .navbar-header .navbar-toggle {

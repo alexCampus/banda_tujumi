@@ -16,8 +16,7 @@ class CreateTokenRegister extends Migration
         Schema::create('token_registers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('token');
-            $table->string('email');
-            $table->timestamp('created')->useCurrent = true;           
+            $table->string('email');           
         });
     }
 

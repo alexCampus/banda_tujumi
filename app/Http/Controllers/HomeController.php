@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\EventModel;
 use App\News;
+
 class HomeController extends Controller
 {
     /**
@@ -22,5 +24,17 @@ class HomeController extends Controller
         $newsModel =  new News;
         $news = $newsModel->getAllNews();
         return view('home', array('imageUrl' => 'img/accueil.jpg', 'news' =>$news));
+    }
+
+    public function presentation()
+    {
+        return view('about', array('imageUrl' => 'img/Tujumi.jpg'));
+    }
+
+    public function indexPrestation()
+    {
+        $events     = EventModel::where('categorie', '=', 'prestation')->orderBy('start_time', 'desc')->get();
+        
+        return view('/prestation', ['imageUrl' => 'img/event.JPG', "events" => $events]);
     }
 }
