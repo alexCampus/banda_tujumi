@@ -116,5 +116,12 @@ class EventController extends Controller
 		return redirect('/agenda');
 	}
 
+	public function delete($id)
+	{
+		$event = EventModel::find($id);
+		$event->delete();
+		return redirect('/agenda');
+	}
+
 
 }

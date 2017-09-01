@@ -88,9 +88,20 @@
         <div id="success"></div>
         <div class="row">
             <div class="form-group col-xs-12">
-        		<input class="btn btn-default" type="submit" value="Envoyer">
+                @if(isset($event))
+        		    <input class="btn btn-default" type="submit" value="Mettre à jour">
+                @else
+                    <input class="btn btn-default" type="submit" value="Envoyer">
+                @endif
             </div>
         </div>
     </form>
+    @if(isset($event))
+        <form method="POST" action='/deleteEvent/{{$event->id}}'>
+            <input name="_method" type="hidden" value="DELETE">
+            {!! csrf_field() !!}
+            <input class="btn btn-danger" type="submit" value="Supprimer l'Evènement">
+        </form>
+    @endif
 </div>
 @endsection

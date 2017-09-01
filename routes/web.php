@@ -34,6 +34,7 @@ Route::post('/{id}/participe',          'EventController@participe')->where('id'
 Route::post('/{id}/desinscription',     'EventController@desinscription')->where('id', '[0-9]+')->middleware('auth');
 Route::get('/updateEvent/{id}',         'EventController@updateView')->where('id', '[0-9]+')->middleware('auth');
 Route::post('/updateEvent/{id}',        'EventController@update')->where('id', '[0-9]+')->middleware('auth');
+Route::delete('/deleteEvent/{id}',        'EventController@delete')->where('id', '[0-9]+')->middleware('auth');
 
 Route::get('/contact',                  'ContactController@index');
 Route::post('/contact',                 'ContactController@send');
