@@ -7,30 +7,7 @@
                 <span class="sr-only">Toggle navigation</span>
                 Menu <i class="fa fa-bars"></i>
             </button>
-           @if (Route::has('login'))
-                    @if (Auth::check())
-                        <div class="dropdown" >
-                            <a class="btn dropdown-toggle colorBlack"  data-toggle="dropdown">
-                            @if( Auth::user()->nickname ) 
-                                    {{ Auth::user()->nickname }}
-                            @else 
-                                    {{ Auth::user()->firstname }}
-                            @endif
-                            </a>
-                            <span class="caret"></span>
-                            <ul class="dropdown-menu colorBlack">
-                                <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
-                            </ul>
-                        </div>
-                            
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
-                    @else
-                        <a class="btn dropdown-toggle colorBlack" onclick="window.location.href='/login'">Se Connecter</a>
-                            
-                    @endif
-                @endif
-        
+        </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -61,10 +38,21 @@
                         <a href="/adminUser">Admin User</a>
                     </li>
                 @endif
+                <li>
+                    @if (Route::has('login'))
+                        @if (Auth::check())       
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Se Déconnecter</a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
+                        @else
+                            <a href='/login'>Se Connecter</a>
+                                
+                        @endif
+                    @endif
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
-    </div>
     </div>
     <!-- /.container -->
 </nav>
