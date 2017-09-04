@@ -83,7 +83,7 @@ div .dropdown-toggle {
 @media only screen and (max-width: 1025px) { /* Remplacez 123px par la taille de votre choix */
   
   .navbar-custom .navbar-header .navbar-toggle {
-    color: #fff;
+    /*color: #fff;*/
     font-weight: 800;
     text-transform: uppercase;
     font-size: 12px;
