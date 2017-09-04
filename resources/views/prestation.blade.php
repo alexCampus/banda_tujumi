@@ -3,7 +3,7 @@
 @section('content')
 	<div class="container">
 		<div id="pattern" class="table-responsive">
-			<table class="table table-hover table-bordered">
+			<table class="table table-hover table-bordered ">
 	  			<thead>
 			      	<tr>
 				        <th>Titre</th>

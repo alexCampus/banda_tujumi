@@ -41,11 +41,10 @@
       <div class="panel-heading">
         <h3 class="panel-title">Liste des Inscrits</h3>   
       </div>
-      <div class="panel-body">
+      <div class="panel-body table-responsive">
         <table class="table table-hover">
             <thead>
               <tr>
-                <th>Nom</th>
                 <th>Prénom</th>
                 <th>Surnom</th>
                 <th>Instrument</th>
@@ -54,7 +53,6 @@
           @foreach( $event->users as $user)
                 <tbody>
                   <tr>
-                    <td>{{$user->lastname}}</td>
                     <td>{{$user->firstname}}</td>
                     <td>{{$user->nickname}}</td>
                     <td>{{$user->instrument}}</td>
