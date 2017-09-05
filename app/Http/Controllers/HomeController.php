@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\EventModel;
 use App\News;
 use Auth;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -34,9 +35,18 @@ class HomeController extends Controller
 
     public function indexPrestation()
     {
-        $events     = EventModel::where('categorie', '=', 'prestation')->orderBy('start_time', 'desc')->get();
+        $today      = Carbon::now();
+        $nextEvents     = EventModel::where('categorie', '=', 'prestation')
+                                ->where('start_time',  '>', Carbon::parse($today)->format('Y-m-d H:m:s'))
+                                ->orderBy('start_time', 'desc')
+                                ->get();
+
+        $pastEvents     = EventModel::where('categorie', '=', 'prestation')
+                                ->where('start_time',  '<', Carbon::parse($today)->format('Y-m-d H:m:s'))
+                                ->orderBy('start_time', 'desc')
+                                ->get();
         
-        return view('/prestation', ['imageUrl' => 'img/event.JPG', "events" => $events]);
+        return view('/prestation', ['imageUrl' => 'img/event.JPG', "nextEvents" => $nextEvents, "pastEvents" => $pastEvents]);
     }
 
     public function indexProfil()

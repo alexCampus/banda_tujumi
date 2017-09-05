@@ -14,7 +14,7 @@
                     <p>20h30-22h00 : Batucada samba reggae – Atelier de rythmes brésiliens – Cours confirmés</p>
 
                     <div class="full" class="content-area">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2813.0018712230044!2d5.702896715552696!3d45.16681197909855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478af35836e50e13%3A0x893029918519864e!2sLe+Prunier+Sauvage!5e0!3m2!1sfr!2sfr!4v1474614997834" width="100%" height="450" frameborder="0" style="border:0"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d44994.320601417916!2d5.680523141899465!3d45.18416019914046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478af48bd689be6f%3A0x618c10cd6e995398!2sGrenoble!5e0!3m2!1sfr!2sfr!4v1504623946319" width="100%" height="450" frameborder="0" style="border:0"></iframe>
                     </div>
                 </div>                
             </div>

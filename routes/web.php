@@ -49,4 +49,3 @@ Route::get('/uploadImages',             'ImagesController@uploadView')->middlewa
 Route::post('/uploadImages',            'ImagesController@store')->middleware('auth');
 
 
-
