@@ -38,17 +38,23 @@
                         <a href="/adminUser">Admin User</a>
                     </li>
                 @endif
-                <li>
-                    @if (Route::has('login'))
-                        @if (Auth::check())       
+                @if (Route::has('login'))
+                    @if (Auth::check())
+                        <li>
+                            <a href="/profil">Mon Profil</a>
+                        </li>       
+                        <li>
                             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Se Déconnecter</a>
+                        </li>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
-                        @else
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
+                    @else
+                        <li>
                             <a href='/login'>Se Connecter</a>
-                                
-                        @endif
+                        </li>
+                            
                     @endif
+                @endif
                 </li>
             </ul>
         </div>

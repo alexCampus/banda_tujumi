@@ -17,8 +17,8 @@ Auth::routes();
 
 Route::get('/',                         'HomeController@index')->name('home');
 Route::get('/prestation',               'HomeController@indexPrestation');
-
 Route::get('/presentation',             'HomeController@presentation');
+Route::get('/profil',                   'HomeController@indexProfil')->middleware('auth');
 
 Route::get('/actualites',               'NewsController@index');
 Route::get('/createNews',               'NewsController@create')->middleware('auth');
@@ -47,5 +47,6 @@ Route::post('/newUser',                 'AdminController@newUser')->middleware('
 Route::get('/medias',                   'ImagesController@index');	
 Route::get('/uploadImages',             'ImagesController@uploadView')->middleware('auth');
 Route::post('/uploadImages',            'ImagesController@store')->middleware('auth');
+
 
 

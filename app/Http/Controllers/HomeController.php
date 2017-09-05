@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\EventModel;
 use App\News;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -36,5 +37,11 @@ class HomeController extends Controller
         $events     = EventModel::where('categorie', '=', 'prestation')->orderBy('start_time', 'desc')->get();
         
         return view('/prestation', ['imageUrl' => 'img/event.JPG', "events" => $events]);
+    }
+
+    public function indexProfil()
+    {
+        $user = Auth::user();
+        return view('/indexProfil', ['imageUrl' => 'img/event.JPG', 'user' => $user]);
     }
 }
