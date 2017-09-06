@@ -51,7 +51,9 @@ class HomeController extends Controller
 
     public function indexProfil()
     {
-        $user = Auth::user();
-        return view('/indexProfil', ['imageUrl' => 'img/event.JPG', 'user' => $user]);
+        $user   = Auth::user();
+        $events = $user->events;
+    
+        return view('/indexProfil', ['imageUrl' => 'img/event.JPG', 'user' => $user, 'events' => $events]);
     }
 }

@@ -28,7 +28,9 @@
 	            </div>
 	        </div>
 	    </div>
-		{{-- <div id="pattern" class="table-responsive">
+	    <hr>
+		<div id="pattern" class="table-responsive">
+			<h2 style="text-align: center">Evènements Inscrits</h2>
 			<table class="table table-hover table-bordered ">
 	  			<thead>
 			      	<tr>
@@ -41,10 +43,20 @@
 			    <tr onclick="window.document.location='/agenda/{{$event->id}}';">
 			        <td>{{$event->title}}</td>
 			        <td>{{\Carbon\Carbon::parse($event->start_time)->format('d/m/Y')}}</td>
+			        <td>
+			        	@if(Auth::check())
+					        @if (!\Carbon\Carbon::parse($event->start_time)->lt(\Carbon\Carbon::now()))
+					          <form method="POST" action="/{{$event->id}}/desinscription">
+					            {!! csrf_field() !!}
+					            <button class="btn-sm btn-default pull-right">Se Désinscrire</button>
+					          </form>
+					        @endif
+				      	@endif
+			        </td>
 			    </tr>
 			@endforeach
 			    </tbody>
-			   </table>
-		</div> --}}
+			</table>
+		</div>
 	</div>
 @endsection
