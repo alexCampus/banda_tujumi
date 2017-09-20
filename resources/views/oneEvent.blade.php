@@ -36,31 +36,32 @@
       </div>
 
     </div>
-    
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Liste des Inscrits</h3>   
+    @if(Auth::check())
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Liste des Inscrits</h3>   
+        </div>
+        <div class="panel-body table-responsive">
+          <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Prénom</th>
+                  <th>Surnom</th>
+                  <th>Instrument</th>
+                </tr>
+              </thead>
+            @foreach( $event->users as $user)
+                  <tbody>
+                    <tr>
+                      <td>{{$user->firstname}}</td>
+                      <td>{{$user->nickname}}</td>
+                      <td>{{$user->instrument}}</td>
+                    </tr>
+                  </tbody>
+              @endforeach
+          </table>	
+        </div>
       </div>
-      <div class="panel-body table-responsive">
-        <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>Prénom</th>
-                <th>Surnom</th>
-                <th>Instrument</th>
-              </tr>
-            </thead>
-          @foreach( $event->users as $user)
-                <tbody>
-                  <tr>
-                    <td>{{$user->firstname}}</td>
-                    <td>{{$user->nickname}}</td>
-                    <td>{{$user->instrument}}</td>
-                  </tr>
-                </tbody>
-            @endforeach
-        </table>	
-      </div>
-    </div>
+    @endif
   </div>
 @endsection

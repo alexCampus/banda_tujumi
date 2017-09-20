@@ -51,7 +51,7 @@ class AdminController extends Controller
         $url ="http://localhost:8000/register?token=" . $token . "&id=" . $id;
         Mail::send('email.sendToken', ['url' => $url], function($message) use ($email)
         {
-            $message->from('contact@bandatujumi.fr', 'Banda Tujumi');
+            $message->from('admin@lelabobois.fr', 'Banda Tujumi');
             $message->to($email);
             $message->subject('Creation de votre compte sur le site banda tujumi');
         });

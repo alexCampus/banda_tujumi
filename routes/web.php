@@ -26,8 +26,8 @@ Route::post('/createNews',              'NewsController@store')->middleware('aut
 Route::get('/updateNews/{id}',          'NewsController@viewUpdate')->where('id', '[0-9]+')->middleware('auth');
 Route::post('/updateNews/{id}',         'NewsController@update')->where('id', '[0-9]+')->middleware('auth');
 
-Route::get('/agenda',                   'EventController@index');
-Route::get('/agenda/{id}',              'EventController@show')->where('id', '[0-9]+');
+Route::get('/agenda',                   'EventController@index')->middleware('auth');
+Route::get('/agenda/{id}',              'EventController@show')->where('id', '[0-9]+')->middleware('auth');
 Route::get('/createEvent',              'EventController@formCreate')->middleware('auth');
 Route::post('/createEvent',             'EventController@store')->middleware('auth');
 Route::post('/{id}/participe',          'EventController@participe')->where('id', '[0-9]+')->middleware('auth');

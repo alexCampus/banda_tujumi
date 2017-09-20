@@ -27,9 +27,11 @@
                 <li>
                     <a href="/prestation">Prestations</a>
                 </li>
-                <li>
-                    <a href="/agenda">Agenda</a>
-                </li>
+                @if(Auth::check())
+                    <li>
+                        <a href="/agenda">Agenda</a>
+                    </li>
+                @endif
                 <li>
                     <a href="/contact">Contact</a>
                 </li>

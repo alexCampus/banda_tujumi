@@ -22,7 +22,7 @@ class ContactController extends Controller
         
       Mail::send('email.sendContact', ['name' => $name, "phoneNumber" => $phoneNumber, 'email' => $email, 'msg' => $msg], function($message)
         {
-            $message->from('contact@bandatujumi.fr', 'Banda Tujumi');
+            $message->from('admin@lelabobois.fr', 'Banda Tujumi');
             $message->to('alex.depem@gmail.com');
             $message->subject('Prise de contact Banda Tujumi');
         });
