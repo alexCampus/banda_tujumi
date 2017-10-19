@@ -47,5 +47,7 @@ Route::post('/newUser',                 'AdminController@newUser')->middleware('
 Route::get('/medias',                   'ImagesController@index');	
 Route::get('/uploadImages',             'ImagesController@uploadView')->middleware('auth');
 Route::post('/uploadImages',            'ImagesController@store')->middleware('auth');
+Route::get('/deleteImages',             'ImagesController@deleteView')->middleware('auth');
+Route::post('/deleteImages/{id}',       'ImagesController@deleteStore')->where('id', '[0-9]+')->middleware('auth');
 
 

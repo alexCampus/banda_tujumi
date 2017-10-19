@@ -17,12 +17,24 @@ class ImagesController extends Controller
         foreach ($images as $key => $image) {
             $categorie[$image->categorie][$key] = $image;
         }
-       	return view('medias', ['imageUrl' => 'img/galerie-grp.jpg','images' => $images, 'categorie' => $categorie]);
+       	return view('medias', ['imageUrl' => 'img/galerie-grp.jpg','categorie' => $categorie]);
     }
 
     public function uploadView()
     {
     	return view('admin.upload');
+    }
+
+    public function deleteView()
+    {
+        $imgModel = new Image;
+        
+        $images = $imgModel->getAllImages();
+        $categorie = [];
+        foreach ($images as $key => $image) {
+            $categorie[$image->categorie][$key] = $image;
+        }
+        return view('admin.deleteImages', ['categorie' => $categorie]);
     }
 
     public function store(Request $request)
@@ -44,5 +56,12 @@ class ImagesController extends Controller
     		return redirect('/medias');
     	}
     	return 'The files is too big';
+    }
+
+    public function deleteStore($id, Request $request) 
+    {
+        Image::destroy($id);
+        Storage::delete($request->img);
+        return redirect('/deleteImages');
     }
 }
