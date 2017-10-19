@@ -1,5 +1,5 @@
-@extends('layouts.app')
-
+@extends('layout.app')
+@section('imageUrl', '../img/accueil.jpg')
 @section('content')
 <div class="container">
     <div class="row">

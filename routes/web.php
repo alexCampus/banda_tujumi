@@ -14,7 +14,7 @@
 
 
 Auth::routes();
-
+Route::get('password/email', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.email');
 Route::get('/',                         'HomeController@index')->name('home');
 Route::get('/prestation',               'HomeController@indexPrestation');
 Route::get('/presentation',             'HomeController@presentation');
