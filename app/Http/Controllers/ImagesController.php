@@ -13,8 +13,11 @@ class ImagesController extends Controller
     	$imgModel = new Image;
     	
     	$images = $imgModel->getAllImages();
-
-       	return view('medias', ['imageUrl' => 'img/galerie-grp.jpg','images' => $images]);
+        $categorie = [];
+        foreach ($images as $key => $image) {
+            $categorie[$image->categorie][$key] = $image;
+        }
+       	return view('medias', ['imageUrl' => 'img/galerie-grp.jpg','images' => $images, 'categorie' => $categorie]);
     }
 
     public function uploadView()
@@ -24,16 +27,17 @@ class ImagesController extends Controller
 
     public function store(Request $request)
     {
-    	if ($request->hasFile('image'))
-    	{
-    		$request->file('image')->storeAs('public/general', $request->file('image')->getClientOriginalName());
+        $categorie = $request->input('categorie');
+        if ($request->hasFile('image'))
+        {
+    		$request->file('image')->storeAs('public/' . $categorie, $request->file('image')->getClientOriginalName());
     		$url = Storage::url($request->file('image')->getClientOriginalName());
 
     		$img = new Image;
 
-    		$img->name       = $request->file('image')->getClientOriginalName();
+    		$img->name      = $request->file('image')->getClientOriginalName();
     		$img->title     = $request->input('title');
-    		$img->categorie = 'general';
+    		$img->categorie = $categorie;
     		
     		$img->save();
 

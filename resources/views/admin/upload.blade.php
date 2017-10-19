@@ -9,6 +9,11 @@
 			<div class="row">
 				<div class="row control-group">
                     <div class="form-group col-xs-12 floating-label-form-group controls">
+                        <label>Categorie</label>
+                        <input type="text" class="form-control" placeholder="Votre Categorie de Photo" name="categorie" required data-validation-required-message="Veuillez entrer une categorie d'image valide.">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                    <div class="form-group col-xs-12 floating-label-form-group controls">
                         <label>Titre</label>
                         <input type="text" class="form-control" placeholder="Votre Titre de Photo" name="title" required data-validation-required-message="Veuillez entrer un titre valide.">
                         <p class="help-block text-danger"></p>

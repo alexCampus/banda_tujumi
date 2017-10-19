@@ -4,35 +4,33 @@ services:
 
   php:
     image: registry-gitlab.eolas.fr/docker/php:5.6-fpm-smart
-    container_name: test_tujumi_php
+    container_name: test_php
     volumes:
-      - .:/home/wwwroot/test-tujumi
+      - .:/home/wwwroot/test
     depends_on:
       - db
 
   apache:
     image: registry-gitlab.eolas.fr/docker/apache:2.4-base
-    container_name: test_tujumi_apache
+    container_name: test_apache
     ports:
       - "80:80"
     volumes:
       - .docker/config/vhosts:/etc/apache2/sites-enabled
-      - .:/home/wwwroot/test-tujumi
+      - .:/home/wwwroot/test
     depends_on:
       - php
 
   db:
     image: mariadb:10.0
-    container_name: test_tujumi_db
+    container_name: test_db
     environment:
-      MYSQL_DATABASE: tujumi
+      MYSQL_DATABASE: lelabobois
       MYSQL_USER: root
       MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - test_data:/var/lib/mysql
-    ports:
-      - "33061:3306"
 
   phpmyadmin:
     image: nazarpc/phpmyadmin
@@ -40,7 +38,7 @@ services:
     ports:
       - 8080:80
     environment:
-      MYSQL_HOST: test_tujumi_db
+      MYSQL_HOST: test_db
 
 volumes:
   test_data:

@@ -16,22 +16,36 @@
 		    <a class="play-pause"></a>
 		    <ol class="indicator"></ol>
 		</div>
-		<div id="links">
-			@foreach($images as $image)
-		     	<a href='storage/{{ $image->categorie }}/{{ $image->name }}' title="{{ $image->title }}">
-		        	<img src="storage/{{ $image->categorie }}/{{ $image->name }}" alt="{{ $image->title }}" style="max-height:100px">
-		    	</a>
-		    @endforeach
+		<div class="row"> 
+			@foreach($categorie as $key => $cat)
+				<div id="links_{{ $key }}" class="col-md-2">
+					<h2>{{ $key }} </h2>
+					<button type="button" class="btn btn-default btn-sm" style="border-radius: 50px 50px 50px">
+			          <span class="glyphicon glyphicon-picture"></span>
+			        </button>
+					@foreach($cat as $image)
+						@if($image->categorie === $key)
+							<a href='storage/{{ $image->categorie }}/{{ $image->name }}' title="{{ $image->title }}">
+			        			<!-- <img src="storage/{{ $image->categorie }}/{{ $image->name }}" alt="{{ $image->title }}" style="max-height:100px"> -->
+			    			</a>
+						@endif
+					@endforeach
+				</div>
+			@endforeach
 		</div>
 		<script>
-		document.getElementById('links').onclick = function (event) {
-	    event = event || window.event;
-	    var target = event.target || event.srcElement,
-	        link = target.src ? target.parentNode : target,
-	        options = {index: link, event: event},
-	        links = this.getElementsByTagName('a');
-	    blueimp.Gallery(links, options);
-		};
+			var cat =  {!! json_encode($categorie) !!};
+			Object.keys(cat).forEach(function (c) {
+				document.getElementById('links_'+c).onclick = function (event) {
+			    event = event || window.event;
+			    var target = event.target || event.srcElement,
+			        link = target.src ? target.parentNode : target,
+			        options = {index: link, event: event},
+			        links = this.getElementsByTagName('a');
+			    blueimp.Gallery(links, options);
+				};
+				console.log(c);
+			});
 
 		</script>
 	</div>
