@@ -14,44 +14,60 @@
 
 
 Auth::routes();
-Route::get('password/email',            'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.email');
-Route::post('password/email',           'Auth\ForgotPasswordController@sendResetLinkEmail');
-Route::get('password/reset/{token}/{email}',    'Auth\ResetPasswordController@showResetForm')->name('password.request');
-Route::post('password/reset',                'Auth\ResetPasswordController@reset')->name('password.reset');
+Route::get('storage/{categorie}/{filename}', function ($categorie, $filename)
+{
+    $path = storage_path('app/public/' . $categorie . '/' . $filename);
+    if (!File::exists($path)) {
+    
+        abort(404);
+    }
 
-Route::get('/',                         'HomeController@index')->name('home');
-Route::get('/prestation',               'HomeController@indexPrestation');
-Route::get('/presentation',             'HomeController@presentation');
-Route::get('/profil',                   'HomeController@indexProfil')->middleware('auth');
+    $file = File::get($path);
+    $type = File::mimeType($path);
 
-Route::get('/actualites',               'NewsController@index');
-Route::get('/createNews',               'NewsController@create')->middleware('auth');
-Route::post('/createNews',              'NewsController@store')->middleware('auth');
-Route::get('/updateNews/{id}',          'NewsController@viewUpdate')->where('id', '[0-9]+')->middleware('auth');
-Route::post('/updateNews/{id}',         'NewsController@update')->where('id', '[0-9]+')->middleware('auth');
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
 
-Route::get('/agenda',                   'EventController@index')->middleware('auth');
-Route::get('/agenda/{id}',              'EventController@show')->where('id', '[0-9]+')->middleware('auth');
-Route::get('/createEvent',              'EventController@formCreate')->middleware('auth');
-Route::post('/createEvent',             'EventController@store')->middleware('auth');
-Route::post('/{id}/participe',          'EventController@participe')->where('id', '[0-9]+')->middleware('auth');
-Route::post('/{id}/desinscription',     'EventController@desinscription')->where('id', '[0-9]+')->middleware('auth');
-Route::get('/updateEvent/{id}',         'EventController@updateView')->where('id', '[0-9]+')->middleware('auth');
-Route::post('/updateEvent/{id}',        'EventController@update')->where('id', '[0-9]+')->middleware('auth');
-Route::delete('/deleteEvent/{id}',        'EventController@delete')->where('id', '[0-9]+')->middleware('auth');
+    return $response;
+});
+Route::get('password/email',                  'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.email');
+Route::post('password/email',                 'Auth\ForgotPasswordController@sendResetLinkEmail');
+Route::get('password/reset/{token}/{email}',  'Auth\ResetPasswordController@showResetForm')->name('password.request');
+Route::post('password/reset',                 'Auth\ResetPasswordController@reset')->name('password.reset');
 
-Route::get('/contact',                  'ContactController@index');
-Route::post('/contact',                 'ContactController@send');
+Route::get('/',                               'HomeController@index')->name('home');
+Route::get('/prestation',                     'HomeController@indexPrestation');
+Route::get('/presentation',                   'HomeController@presentation');
+Route::get('/profil',                         'HomeController@indexProfil')->middleware('auth');
 
-Route::get('/adminUser',                'AdminController@index')->middleware('auth');
-Route::get('/upGradeAdminLevel/{id}',   'AdminController@upGradeAdminLevel')->where('id', '[0-9]+')->middleware('auth');
-Route::get('/downGradeAdminLevel/{id}', 'AdminController@downGradeAdminLevel')->where('id', '[0-9]+')->middleware('auth');
-Route::post('/newUser',                 'AdminController@newUser')->middleware('auth');
+Route::get('/actualites',                     'NewsController@index');
+Route::get('/createNews',                     'NewsController@create')->middleware('auth');
+Route::post('/createNews',                    'NewsController@store')->middleware('auth');
+Route::get('/updateNews/{id}',                'NewsController@viewUpdate')->where('id', '[0-9]+')->middleware('auth');
+Route::post('/updateNews/{id}',               'NewsController@update')->where('id', '[0-9]+')->middleware('auth');
 
-Route::get('/medias',                   'ImagesController@index');	
-Route::get('/uploadImages',             'ImagesController@uploadView')->middleware('auth');
-Route::post('/uploadImages',            'ImagesController@store')->middleware('auth');
-Route::get('/deleteImages',             'ImagesController@deleteView')->middleware('auth');
-Route::post('/deleteImages/{id}',       'ImagesController@deleteStore')->where('id', '[0-9]+')->middleware('auth');
+Route::get('/agenda',                         'EventController@index')->middleware('auth');
+Route::get('/agenda/{id}',                    'EventController@show')->where('id', '[0-9]+')->middleware('auth');
+Route::get('/createEvent',                    'EventController@formCreate')->middleware('auth');
+Route::post('/createEvent',                   'EventController@store')->middleware('auth');
+Route::post('/{id}/participe',                'EventController@participe')->where('id', '[0-9]+')->middleware('auth');
+Route::post('/{id}/desinscription',           'EventController@desinscription')->where('id', '[0-9]+')->middleware('auth');
+Route::get('/updateEvent/{id}',               'EventController@updateView')->where('id', '[0-9]+')->middleware('auth');
+Route::post('/updateEvent/{id}',              'EventController@update')->where('id', '[0-9]+')->middleware('auth');
+Route::delete('/deleteEvent/{id}',            'EventController@delete')->where('id', '[0-9]+')->middleware('auth');
+
+Route::get('/contact',                        'ContactController@index');
+Route::post('/contact',                       'ContactController@send');
+
+Route::get('/adminUser',                      'AdminController@index')->middleware('auth');
+Route::get('/upGradeAdminLevel/{id}',         'AdminController@upGradeAdminLevel')->where('id', '[0-9]+')->middleware('auth');
+Route::get('/downGradeAdminLevel/{id}',       'AdminController@downGradeAdminLevel')->where('id', '[0-9]+')->middleware('auth');
+Route::post('/newUser',                       'AdminController@newUser')->middleware('auth');
+
+Route::get('/medias',                         'ImagesController@index');	
+Route::get('/uploadImages',                   'ImagesController@uploadView')->middleware('auth');
+Route::post('/uploadImages',                  'ImagesController@store')->middleware('auth');
+Route::get('/deleteImages',                   'ImagesController@deleteView')->middleware('auth');
+Route::post('/deleteImages/{id}',             'ImagesController@deleteStore')->where('id', '[0-9]+')->middleware('auth');
 
 

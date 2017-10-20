@@ -14,7 +14,7 @@
                             <label for="lastname" class="col-md-4 control-label">Nom</label>
 
                             <div class="col-md-6">
-                                <input id="lastname" type="text" class="form-control" name="lastname" value="{{ old('lastname') }}" required autofocus>
+                                <input id="lastname" type="text" class="form-control" name="lastname" value="{{ old('lastname') }}" placeholder="Nom" required autofocus>
 
                                 @if ($errors->has('lastname'))
                                     <span class="help-block">
@@ -28,7 +28,7 @@
                             <label for="firstname" class="col-md-4 control-label">Prénom</label>
 
                             <div class="col-md-6">
-                                <input id="firstname" type="text" class="form-control" name="firstname" value="{{ old('firstname') }}" required autofocus>
+                                <input id="firstname" type="text" class="form-control" name="firstname" value="{{ old('firstname') }}" placeholder="Prénom" required autofocus>
 
                                 @if ($errors->has('firstname'))
                                     <span class="help-block">
@@ -42,7 +42,7 @@
                             <label for="nickname" class="col-md-4 control-label">Surnom</label>
 
                             <div class="col-md-6">
-                                <input id="nickname" type="text" class="form-control" name="nickname" value="{{ old('nickname') }}" required autofocus>
+                                <input id="nickname" type="text" class="form-control" name="nickname" value="{{ old('nickname') }}" placeholder="Surnom donné par Bira" required autofocus>
 
                                 @if ($errors->has('nickname'))
                                     <span class="help-block">
@@ -56,7 +56,7 @@
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="E-Mail" required>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -67,10 +67,10 @@
                         </div>
 
                          <div class="form-group{{ $errors->has('phonenumber') ? ' has-error' : '' }}">
-                            <label for="phonenumber" class="col-md-4 control-label">N° de Téléphone</label>
+                            <label for="phonenumber" class="col-md-4 control-label">N° de Téléphone </label>
 
                             <div class="col-md-6">
-                                <input id="phonenumber" type="phonenumber" class="form-control" name="phonenumber" value="{{ old('phonenumber') }}" required>
+                                <input id="phonenumber" type="phonenumber" class="form-control" name="phonenumber" value="{{ old('phonenumber') }}" placeholder="0600000000" required maxlength="10">
 
                                 @if ($errors->has('phonenumber'))
                                     <span class="help-block">
@@ -84,7 +84,7 @@
                             <label for="instrument" class="col-md-4 control-label">Instrument</label>
 
                             <div class="col-md-6">
-                                <input id="instrument" type="text" class="form-control" name="instrument" value="{{ old('instrument') }}" required>
+                                <input id="instrument" type="text" class="form-control" name="instrument" value="{{ old('instrument') }}" placeholder="Instrument Principal" required>
 
                                 @if ($errors->has('instrument'))
                                     <span class="help-block">
@@ -98,7 +98,7 @@
                             <label for="password" class="col-md-4 control-label">Mot de Passe</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                <input id="password" type="password" class="form-control" name="password" placeholder="Mot de Passe" required>
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -112,7 +112,7 @@
                             <label for="password-confirm" class="col-md-4 control-label">Confirmez votre Mot de Passe</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirmation Mot de Passe" required>
                             </div>
                         </div>
 
