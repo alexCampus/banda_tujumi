@@ -75,7 +75,24 @@ div .dropdown-toggle {
   margin-top:3%;
   color:#FFFFFF; 
 }
+
+#bira-about {
+    max-width: 400px;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    margin-left: 30%;
+}
 @media only screen and (max-width: 500px) {
+    #bira-about {
+        max-width: 200px;
+        border-top-right-radius: 25px;
+        border-top-left-radius: 25px;
+        border-bottom-right-radius: 25px;
+        border-bottom-left-radius: 25px;
+        margin-left: 0;
+    }
   .colorBlack {
     color: #7c7f84;
   }
@@ -126,8 +143,14 @@ div .dropdown-toggle {
 }
 
 @media only screen and (min-width: 768px) {
+    body {
+        background: linear-gradient(to bottom right, rgba(28, 208, 255, 0.53), rgba(233, 255, 0, 0.54), rgba(67, 46, 19, 0.48), rgba(230, 199, 42, 0.66));
+    }
+    #bira-about {
+        margin-left: 40%;
+    }
   .navbar-custom {
-    background: transparent;
+    background: rgba(84, 56, 0, 0.48);
     border-bottom: 1px solid transparent;
   }
   .navbar-custom .navbar-brand {

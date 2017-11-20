@@ -25,7 +25,7 @@ class HomeController extends Controller
     {
         $newsModel =  new News;
         $news = $newsModel->getAllNews();
-        return view('home', array('imageUrl' => 'img/accueil.jpg', 'news' =>$news));
+        return view('home', array('imageUrl' => 'img/3.jpg', 'news' =>$news));
     }
 
     public function presentation()
