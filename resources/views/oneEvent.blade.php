@@ -6,7 +6,7 @@
     @if (!\Carbon\Carbon::parse($event->start_time)->lt($currentDate))
         <form method="POST" action="/{{$event->id}}/participe">
           {!! csrf_field() !!}
-          <button class="btn-sm btn-default pull-right">S'Inscrire</button>
+          <button class="btn btn-default pull-right">S'Inscrire</button>
         </form>
     @endif
   @endif
@@ -15,7 +15,7 @@
         @if (!\Carbon\Carbon::parse($event->start_time)->lt($currentDate))
           <form method="POST" action="/{{$event->id}}/desinscription">
             {!! csrf_field() !!}
-            <button class="btn-sm btn-default pull-right">Se Désinscrire</button>
+            <button class="btn btn-default pull-right">Se Désinscrire</button>
           </form>
         @endif
       @endif

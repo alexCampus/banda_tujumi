@@ -18,22 +18,22 @@
                 </div>                
             </div>
             <div class="col-lg-4 col-sm-12">
-                <div class="well">
+                <div class="well colorBlock">
                     <h4>Actualités</h4>
                     <div class="row">
                         <div class="post-preview">
-                            @foreach($news as $new)
+                            {{--@foreach($news as $new)--}}
                                 <a href="/actualites">
-                                    <h5>{{$new->title}}</h5>
+                                    <h5>{{$news->title}}</h5>
                                     <small><em>
                                         @php
-                                            echo substr($new->content,0,70)
+                                            echo substr($news->content,0,70)
                                         @endphp
                                         ....
                                     </em></small>
                                 </a>
                                 <hr>
-                           @endforeach
+                           {{--@endforeach--}}
                                 
                         </div>
                     </div>

@@ -84,6 +84,13 @@ div .dropdown-toggle {
     border-bottom-left-radius: 25px;
     margin-left: 30%;
 }
+
+.colorBlock {
+  border: none;
+  background: linear-gradient(to bottom right, rgba(28, 208, 255, 0.35), rgba(233, 255, 0, 0.08), rgba(67, 46, 19, 0.12), rgb(230, 199, 42));
+  border-radius: 50px 50px 50px;
+}
+
 @media only screen and (max-width: 500px) {
     #bira-about {
         max-width: 200px;
