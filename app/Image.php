@@ -15,8 +15,10 @@ class Image extends Model
 
     public $timestamps = false;
 
-     public function getAllImages() {
+     public function getAllImages()
+     {
     	$images = Image::all();
     	return $images;
-    }
+     }
+
 }

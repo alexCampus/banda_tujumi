@@ -3,12 +3,12 @@
 @section('content')
 	<div class="container">
 		<h2 style="text-align: center">Médias</h2>
-		<hr>
 		@if (Auth::check() && Auth::user()->adminLevel > 0)
-	   			<a class="pull-right" href="/uploadImages" style="color:#a8534b"><i class="fa fa-plus" aria-hidden="true"> Upload</i></a><br>
-	   			<a class="pull-right" href="/deleteImages" style="color:#a8534b"><i class="fa fa-plus" aria-hidden="true"> Supprimer Images</i></a>
-	   	@endif
-		
+			<a class="pull-right" href="/uploadImages" style="color:#a8534b"><i class="fa fa-plus" aria-hidden="true"> Upload</i></a><br>
+			<a class="pull-right" href="/deleteImages" style="color:#a8534b"><i class="fa fa-plus" aria-hidden="true"> Supprimer Images</i></a>
+		@endif
+		<hr>
+
 		<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
 		    <div class="slides"></div>
 		    <h3 class="title"></h3>
@@ -19,7 +19,7 @@
 		</div>
 		<div class="row"> 
 			@foreach($categorie as $key => $cat)
-				<div id="links_{{ $key }}" class="col-md-2">
+				<div id="links_{{ $key }}" class="col-md-4">
 					<h2>{{ $key }} </h2>
 					<button type="button" class="btn btn-default btn-sm" style="border-radius: 50px 50px 50px">
 			          <span class="glyphicon glyphicon-picture"></span>

@@ -22,7 +22,13 @@ class ImagesController extends Controller
 
     public function uploadView()
     {
-    	return view('admin.upload');
+        $imgModel = new Image();
+        $images   = $imgModel->getAllImages();
+        $categories = [];
+        foreach ($images as $key => $image) {
+            $categories[$image->categorie][$key] = $image;
+        }
+    	return view('admin.upload', ['categories' => $categories]);
     }
 
     public function deleteView()
@@ -39,7 +45,14 @@ class ImagesController extends Controller
 
     public function store(Request $request)
     {
-        $categorie = $request->input('categorie');
+
+        if ($request->categorieInput === '' && $request->categorieSelect != '') {
+            $categorie = $request->categorieSelect;
+        } else if ($request->categorieSelect === '' && $request->categorieInput != ''){
+            $categorie = $request->categorieInput;
+        } else {
+            return redirect('/uploadImages')->with('status', 'Vous devez choisir OU saisir une catégorie.');
+        }
         if ($request->hasFile('image'))
         {
     		$request->file('image')->storeAs('public/' . $categorie, $request->file('image')->getClientOriginalName());
@@ -50,12 +63,12 @@ class ImagesController extends Controller
     		$img->name      = $request->file('image')->getClientOriginalName();
     		$img->title     = $request->input('title');
     		$img->categorie = $categorie;
-    		
     		$img->save();
 
     		return redirect('/medias');
     	}
-    	return 'The files is too big';
+    	//@TODO PREVOIR UNE ALERTE ET PR2CISER LA TAILLE MAX
+        return redirect('/uploadImages')->with('status', 'Le fichier est supérieur à 3Mo.');
     }
 
     public function deleteStore($id, Request $request) 

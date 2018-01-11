@@ -3,12 +3,12 @@
 @section('content')
 	<div class="container">
 		<div class="row">
-	       	<div class=" col-sm-offset-3 col-xs-12 col-sm-6 col-md-6">
-	            <div class="well well-sm">
+	       	<div class="col-sm-offset-3 col-xs-12 col-sm-6 col-md-6">
+	            <div class="well well-sm borderRadiusSm">
 	                <div class="row">
 	                    <div class="col-sm-6 col-md-8">
 	                        <h4>{{$user->firstname}} {{$user->lastname}}</h4>
-	                        <small><cite title="San Francisco, USA"><i class="glyphicon glyphicon-user">
+	                        <small><cite><i class="glyphicon glyphicon-user">
 	                        </i> {{$user->nickname}} </cite></small>
 	                        <p>
 	                            <i class="glyphicon glyphicon-envelope"></i> {{$user->email}} 

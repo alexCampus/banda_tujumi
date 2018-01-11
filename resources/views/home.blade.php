@@ -22,7 +22,6 @@
                     <h4>Actualités</h4>
                     <div class="row">
                         <div class="post-preview">
-                            {{--@foreach($news as $new)--}}
                                 <a href="/actualites">
                                     <h5>{{$news->title}}</h5>
                                     <small><em>
@@ -32,9 +31,7 @@
                                         ....
                                     </em></small>
                                 </a>
-                                <hr>
-                           {{--@endforeach--}}
-                                
+                                <hr>                            
                         </div>
                     </div>
                 </div>                

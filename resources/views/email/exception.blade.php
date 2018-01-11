@@ -131,7 +131,13 @@ p, ul, ol {
                                 </td>
                             </tr>
                         </table>
-                        <p>{{$error}}</p>
+                        <p><strong>Date:</strong> {{ date('M d, Y H:iA') }}</p>
+			<p><strong>Message:</strong> {{ $error->getMessage() }}</p>
+			<p><strong>Code:</strong> {{ $error->getCode() }}</p>
+			<p><strong>File:</strong> {{ $error->getFile() }}</p>
+			<p><strong>Line:</strong> {{ $error->getLine() }}</p>
+			<h3>Stack trace:</h3>
+			<pre>{{ $error->getTraceAsString() }}</pre>
 
                     </td>
                 </tr>

@@ -24,5 +24,4 @@ class News extends Model
         $news = News::find($id);
         return $news;
     }
-
 }

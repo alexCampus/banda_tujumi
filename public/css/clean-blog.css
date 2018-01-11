@@ -91,6 +91,10 @@ div .dropdown-toggle {
   border-radius: 50px 50px 50px;
 }
 
+.borderRadiusSm {
+  border-radius: 50px 50px 50px;
+}
+
 @media only screen and (max-width: 500px) {
     #bira-about {
         max-width: 200px;

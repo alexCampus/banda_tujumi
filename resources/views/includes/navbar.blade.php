@@ -16,7 +16,7 @@
                     <a href="/">Accueil</a>
                 </li>
                 <li>
-                    <a href="/presentation">Présentation</a>
+                    <a href="{{ url('/presentation') }}">Présentation</a>
                 </li>
                 <li>
                     <a href="/actualites">Actualités</a>
