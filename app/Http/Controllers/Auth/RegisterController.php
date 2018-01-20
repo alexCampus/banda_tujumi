@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Services\MailGenerator;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -38,38 +39,38 @@ class RegisterController extends Controller
      */
     public function __construct(Request $request)
     {
-        // $method = $request->method();
-        
-        // if ($request->isMethod('post')) {
-            $this->middleware('guest'); 
-        // }
+         $method = $request->method();
 
-        // if ($request->isMethod('get')) {
-        //     $url       = $request->fullUrl();      
-        //     $query     = explode('&',parse_url($url, PHP_URL_QUERY)); 
+         if ($request->isMethod('post')) {
+            $this->middleware('guest');
+         }
 
-        //     if ($query[0] != "") {
-        //         $id        = explode('=', $query[0]);
-        //         $token     = explode('=', $query[1]);
+         if ($request->isMethod('get')) {
+             $url       = $request->fullUrl();
+             $query     = explode('&',parse_url($url, PHP_URL_QUERY));
 
-        //         $tokenUser = TokenRegister::find($id[1]);
+             if ($query[0] != "") {
+                 $id        = explode('=', $query[0]);
+                 $token     = explode('=', $query[1]);
 
-        //         if ($tokenUser === null) {
-        //             $this->middleware('auth');
-        //             return redirect('/');
-        //         }
-               
-        //         if ($id[1] === strval($tokenUser->id) && $token[1] === $tokenUser->token) {
-        //             $this->middleware('guest');
-        //             $tokenUser->delete();
-        //         } else {
-        //            $this->middleware('auth'); 
-        //         }
-        //     }
-        //     else {
-        //         $this->middleware('auth'); 
-        //     }
-        // }       
+                 $tokenUser = TokenRegister::find($id[1]);
+
+                 if ($tokenUser === null) {
+                     $this->middleware('auth');
+                     return redirect('/');
+                 }
+
+                 if ($id[1] === strval($tokenUser->id) && $token[1] === $tokenUser->token) {
+                     $this->middleware('guest');
+                     $tokenUser->delete();
+                 } else {
+                    $this->middleware('auth');
+                 }
+             }
+             else {
+                 $this->middleware('auth');
+             }
+         }
     }
    
     /**
@@ -82,7 +83,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'lastname'       => 'required|string|max:255',
-            'phonenumber'    => 'required|numeric|size:10',
+            'phonenumber'    => 'required|string|size:10',
             'email'          => 'required|string|email|max:255|unique:users_banda_tujumi',
             'password'       => 'required|string|min:6|confirmed',
         ]);
@@ -96,6 +97,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        MailGenerator::newUser($data['firstname'], $data['lastname']);
         return User::create([
             'lastname' => $data['lastname'],
             'firstname' => $data['firstname'],

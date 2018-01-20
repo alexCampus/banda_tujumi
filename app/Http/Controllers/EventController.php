@@ -70,7 +70,7 @@ class EventController extends Controller
 
     	$this->eventModel->save();
 
-    //	MailGenerator::prestationMail($this->eventModel);
+    //	MailGenerator::prestationMail($this->eventModel, $request);
 
 		return redirect('/agenda');
 	}

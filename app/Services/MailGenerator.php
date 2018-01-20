@@ -53,4 +53,16 @@ class MailGenerator
             $message->subject('Creation de votre compte sur le site banda tujumi');
         });
     }
+
+    static function newUser($firstname, $lastname)
+    {
+        $email = 'alex.depem@hotmail.fr';
+
+        Mail::send('email.newUser',['firstname' => $firstname, 'lastname' => $lastname], function($message) use ($email)
+        {
+            $message->from('admin@lelabobois.fr', 'Banda Tujumi');
+            $message->to($email);
+            $message->subject('Un nouvel utilisateur vient de creer son compte');
+        });
+    }
 }

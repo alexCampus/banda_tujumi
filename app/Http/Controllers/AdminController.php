@@ -49,6 +49,7 @@ class AdminController extends Controller
         $tokenRegister->save();
 
         $id = $tokenRegister->getId();
+
         MailGenerator::generateToken($token, $id, $email);
 
         return redirect('/adminUser');
