@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
+
+use App\Services\MailGenerator;
 use Illuminate\Http\Request;
 use App\EventModel;
 use Carbon\Carbon;
@@ -9,11 +12,17 @@ use Auth;
 
 class EventController extends Controller
 {
-	public function index() {
-		$eventsCalendar = [];
+    protected $eventModel;
 
-		$eventModel = new EventModel;
-		$events     = $eventModel->getAllEvents();
+    public function __construct(EventModel $eventModel)
+    {
+        $this->eventModel = $eventModel;
+    }
+
+    public function index() {
+		$eventsCalendar = [];
+		$events         = $this->eventModel->getAllEvents();
+
 		foreach ($events as $event) {
 			$eventsCalendar[] = \Calendar::event(
 			    $event->title, //event title
@@ -49,25 +58,26 @@ class EventController extends Controller
 
 	public function store(Request $request) 
 	{
-		$event = new EventModel;
-    	$event->title   = $request->input('title');
-    	$event->content = $request->input('content');
+    	$this->eventModel->title   = $request->input('title');
+        $this->eventModel->content = $request->input('content');
     	if ($request->input('fullDay')) {
-    		$event->isDay = $request->input('fullDay');
+            $this->eventModel->isDay = $request->input('fullDay');
     	}
-    	$event->start_time      = Carbon::createFromFormat('d/m/Y H:i', $request->input('startTime'))->format('Y-m-d H:i');
-    	$event->end_time        = Carbon::createFromFormat('d/m/Y H:i', $request->input('endTime'))->format('Y-m-d H:i');
-    	$event->backgroundColor = $request->input('color');
-    	$event->categorie 	 	= $request->input('categorie');
+        $this->eventModel->start_time      = Carbon::createFromFormat('d/m/Y H:i', $request->input('startTime'))->format('Y-m-d H:i');
+        $this->eventModel->end_time        = Carbon::createFromFormat('d/m/Y H:i', $request->input('endTime'))->format('Y-m-d H:i');
+        $this->eventModel->backgroundColor = $request->input('color');
+        $this->eventModel->categorie 	 	= $request->input('categorie');
 
-    	$event->save();
+    	$this->eventModel->save();
+
+    //	MailGenerator::prestationMail($this->eventModel);
+
 		return redirect('/agenda');
 	}
 
 	public function show($id)
 	{
-		$eventModel  = new EventModel;
-		$event       = $eventModel->getOneEvent($id);
+		$event       = $this->eventModel->getOneEvent($id);
 		$user        = Auth::user();
 		$currentDate = Carbon::now();
 		if ($event->users->contains($user))
@@ -82,7 +92,7 @@ class EventController extends Controller
 
 	public function participe($id)
 	{
-		$saveEvent = EventModel::find($id);
+		$saveEvent = $this->eventModel->find($id);
 		$user      = Auth::user();
 		$saveEvent->users()->save($user);
 		return redirect('/agenda/' . $id);
@@ -90,7 +100,7 @@ class EventController extends Controller
 
 	public function desinscription($id)
 	{
-		$saveEvent = EventModel::find($id);
+		$saveEvent = $this->eventModel->find($id);
 		$user      = Auth::user();
 		$saveEvent->users()->detach($user);
 		return redirect('/agenda/' . $id);
@@ -99,28 +109,32 @@ class EventController extends Controller
 	public function updateView($id)
 	{
 
-		$event = EventModel::find($id);
+		$event = $this->eventModel->find($id);
 		
 		return view('createEvent', ['event' => $event]);
 	}
 
 	public function update($id, Request $request)
 	{
-		$event = EventModel::find($id);
+		$event = $this->eventModel->find($id);
 		$event->title   = $request->input('title');
     	$event->content = $request->input('content');
     	$event->start_time      = Carbon::createFromFormat('d/m/Y H:i', $request->input('startTime'))->format('Y-m-d H:i');
     	$event->end_time        = Carbon::createFromFormat('d/m/Y H:i', $request->input('endTime'))->format('Y-m-d H:i');
     	$event->backgroundColor = $request->input('color');
-    	$event->save();	
+    	$event->save();
+
+//        MailGenerator::prestationMail($event, $request);
+
 		return redirect('/agenda');
 	}
 
-	public function delete($id)
+	public function delete($id, Request $request)
 	{
-		$event = EventModel::find($id);
-		$event->delete();
-		return redirect('/agenda');
+        $event = $this->eventModel->find($id);
+        $event->delete();
+      //  MailGenerator::prestationMail($event, $request);
+        return redirect('/agenda');
 	}
 
 }

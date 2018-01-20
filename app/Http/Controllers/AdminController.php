@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\MailGenerator;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
 use App\TokenRegister;
-use Illuminate\Support\Facades\Mail;
+
 
 class AdminController extends Controller
 {
@@ -48,13 +49,7 @@ class AdminController extends Controller
         $tokenRegister->save();
 
         $id = $tokenRegister->getId();
-        $url ="http://localhost:8000/register?token=" . $token . "&id=" . $id;
-        Mail::send('email.sendToken', ['url' => $url], function($message) use ($email)
-        {
-            $message->from('admin@lelabobois.fr', 'Banda Tujumi');
-            $message->to($email);
-            $message->subject('Creation de votre compte sur le site banda tujumi');
-        });
+        MailGenerator::generateToken($token, $id, $email);
 
         return redirect('/adminUser');
     }

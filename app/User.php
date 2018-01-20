@@ -34,7 +34,7 @@ class User extends Authenticatable
         return $this->belongsToMany('App\EventModel');
     }
 
-    public function getallUsers()
+    public function getAllUsers()
     {
         $users = User::all();
         return $users;
