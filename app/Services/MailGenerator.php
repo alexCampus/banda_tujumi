@@ -12,7 +12,7 @@ class MailGenerator
     static function prestationMail($event, $request)
     {
         if ($request->path() === 'createEvent') {
-            $subject   = 'Une nouvelle prestation vient d\'etre ajouter sur le site banda tujumi';
+            $subject   = 'Une nouvelle prestation vient d\'etre mise sur le site banda tujumi';
             $typeEmail = 'email.newPrestation';
             $url       = "http://localhost:8000/agenda/" . $event->id;
             $users     = User::all();
@@ -26,6 +26,11 @@ class MailGenerator
             $typeEmail = 'email.deletePrestation';
             $url       = "http://localhost:8000/agenda/";
             $users     = $event->users;
+        } elseif ($request->path() === 'createNews') {
+            $subject   = 'Une nouvelle actu vient d\'etre mise sur le site banda tujumi';
+            $typeEmail = 'email.newActualite';
+            $url       = "http://localhost:8000/actualites/";
+            $users     = User::all();
         }
 
 
@@ -65,5 +70,4 @@ class MailGenerator
             $message->subject('Un nouvel utilisateur vient de creer son compte');
         });
     }
-
 }

@@ -33,10 +33,10 @@ class NewsController extends Controller
     	$new->isPrivate = $request->get('isPrivate');
     	$new->date      = Carbon::now('Europe/London');
     	$new->save();
-//@TODO Generer email lors de la creation de news prive
-//    	if ($request->get('isPrivate') === 1) {
-//            MailGenerator::prestationMail($this->eventModel, $request);
-//        }
+
+    	if ($request->get('isPrivate') === 1) {
+            MailGenerator::prestationMail($new, $request);
+        }
     	return redirect('/actualites');
     }
 

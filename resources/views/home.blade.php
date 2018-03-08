@@ -25,10 +25,7 @@
                                 <a href="/actualites">
                                     <h5>{{$news->title}}</h5>
                                     <small><em>
-                                        @php
-                                            echo substr($news->content,0,70)
-                                        @endphp
-                                        ....
+                                            {!! str_limit($news->content, $limit = 150, $end = '...')!!}
                                     </em></small>
                                 </a>
                                 <hr>                            

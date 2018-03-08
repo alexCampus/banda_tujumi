@@ -3,7 +3,7 @@
 @section('content')
 	<div class="container">
     <h2 style="text-align: center">Mise à jour Actualités</h2>
-	<form name="updateNews" method="POST" action="/updateNews/{{ $news->id }}">
+	<form name="updateNews" method="POST" action="/updateNews/{{ $news->id }}" novalidate>
 	{!! csrf_field() !!}
         <div class="row control-group">
             <div class="form-group col-xs-12 floating-label-form-group controls">
