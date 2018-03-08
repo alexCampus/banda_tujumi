@@ -65,4 +65,5 @@ class MailGenerator
             $message->subject('Un nouvel utilisateur vient de creer son compte');
         });
     }
+
 }

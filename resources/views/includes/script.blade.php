@@ -15,4 +15,5 @@
 <script src="{{ asset('js/jquery.simplecolorpicker.js')}}"></script>
 <!-- <script src="{{ asset('js/blueimp-gallery.min.js') }}"></script> -->
 <script src="{{ asset('js/jquery.blueimp-gallery.min.js') }}"></script>
+@yield('script')
 

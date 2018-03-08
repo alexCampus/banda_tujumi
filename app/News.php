@@ -15,12 +15,20 @@ class News extends Model
 
     public $timestamps = false;
 
-    public function getAllNews() {
+    public function getAllNews()
+    {
     	$news = News::all()->sortByDesc("date");
     	return $news;
     }
 
-    public function getOneNews($id) {
+    public function getAllNewsPublic()
+    {
+    	$news = News::where('isPrivate', 0)->orderBy('date', 'desc')->get();
+    	return $news;
+    }
+
+    public function getOneNews($id)
+    {
         $news = News::find($id);
         return $news;
     }

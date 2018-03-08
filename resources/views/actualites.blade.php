@@ -15,7 +15,7 @@
                     <div class="post-preview">
 					@foreach($news as $new)
 						<h2>{{ $new->title }}</h2>
-                        <p class='lead'>{{ $new->content }}</p>
+                        <p class='lead'>{!! $new->content !!}</p>
 						<p class="lead">posté le : <span class="glyphicon glyphicon-time"></span> {{ date('d-m-Y', strtotime($new->date)) }}</p>
 						@if (Auth::check() && Auth::user()->adminLevel > 0)
 							<a href="/updateNews/{{$new->id}}" style="color:#a8534b"><i class="fa fa-plus" aria-hidden="true"> Mettre a Jour</i></a></li>

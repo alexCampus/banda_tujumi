@@ -24,7 +24,12 @@ class HomeController extends Controller
     public function index()
     {
         $newsModel =  new News;
-        $news = $newsModel->getAllNews();
+        if (Auth::check()) {
+            $news = $newsModel->getAllNews();
+        } else {
+            $news = $newsModel->getAllNewsPublic();;
+        }
+
         return view('home', array('imageUrl' => 'img/3.jpg', 'news' =>$news->first()));
     }
 
