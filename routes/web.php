@@ -39,6 +39,8 @@ Route::get('/',                               'HomeController@index')->name('hom
 Route::get('/prestation',                     'HomeController@indexPrestation');
 Route::get('/presentation',                   'HomeController@presentation');
 Route::get('/profil',                         'HomeController@indexProfil')->middleware('auth');
+Route::get('/updateProfil',                   'HomeController@updateProfil')->middleware('auth');
+Route::post('/updateProfil',                   'HomeController@updateProfil')->middleware('auth');
 
 Route::get('/actualites',                     'NewsController@index');
 Route::get('/createNews',                     'NewsController@create')->middleware('auth');

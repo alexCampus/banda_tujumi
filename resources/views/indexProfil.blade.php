@@ -18,11 +18,12 @@
 	                            <i class="glyphicon glyphicon-oil"></i> {{$user->instrument}}
 	                        </p>
 	                        <!-- Split button -->
-	                        {{-- <div class="btn-group">
-	                            <button type="button" class="btn btn-primary">
-	                                Mettre à jour
-	                            </button>
-	                        </div> --}}
+	                         <div class="btn-group">
+								<a type="button" class="btn btn-primary" href="/updateProfil">
+									Mettre à jour
+								</a>
+
+	                        </div>
 	                    </div>
 	                </div>
 	            </div>
@@ -60,3 +61,12 @@
 		</div>
 	</div>
 @endsection
+
+@section('script')
+	<script>
+        function getUpdatePath() {
+            window.location.replace('/updateProfil')
+        }
+	</script>
+@endsection
+

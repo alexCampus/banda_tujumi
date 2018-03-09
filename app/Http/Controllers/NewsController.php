@@ -10,6 +10,13 @@ use Auth;
 
 class NewsController extends Controller
 {
+    private $news;
+
+    public function __construct(News $news)
+    {
+        $this->news = $news;
+    }
+
     public function index() {
     	$newsModel =  new News;
     	if (Auth::check()) {
@@ -27,12 +34,11 @@ class NewsController extends Controller
 
     public function store(Request $request)
     {
-    	$new = new News;
-    	$new->title     = $request->input('title');
-    	$new->content   = $request->input('content');
-    	$new->isPrivate = $request->get('isPrivate');
-    	$new->date      = Carbon::now('Europe/London');
-    	$new->save();
+    	$this->news->title     = $request->input('title');
+        $this->news->content   = $request->input('content');
+        $this->news->isPrivate = $request->get('isPrivate');
+        $this->news->date      = Carbon::now('Europe/London');
+        $this->news->save();
 
     	if ($request->get('isPrivate') === 1) {
             MailGenerator::prestationMail($new, $request);
@@ -40,18 +46,17 @@ class NewsController extends Controller
     	return redirect('/actualites');
     }
 
-    public function viewUpdate($id) {
+    public function viewUpdate($id)
+    {
 
-        $newsModel = new News;
-        $news      = $newsModel->getOneNews($id);
+        $news      = $this->news->getOneNews($id);
 
         return view('updateNews', ['news' => $news]);
     }
 
     public function update($id, Request $request) {
 
-        $newsModel = new News;
-        $news      = $newsModel->getOneNews($id);
+        $news      = $this->news->getOneNews($id);
 
         if ($request->input('title')) {
             $news->title = $request->input('title');

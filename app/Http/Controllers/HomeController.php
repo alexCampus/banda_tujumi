@@ -61,4 +61,23 @@ class HomeController extends Controller
     
         return view('/indexProfil', ['imageUrl' => 'img/event.JPG', 'user' => $user, 'events' => $events]);
     }
+
+    public function updateProfil(Request $request)
+    {
+        $user   = Auth::user();
+        if ($request->isMethod('post')) {
+            $user->lastname    = $request->input('lastname');
+            $user->firstname   = $request->input('firstname');
+            $user->nickname    = $request->input('nickname');
+            $user->email       = $request->input('email');
+            $user->phonenumber = $request->input('phonenumber');
+            $user->instrument  = $request->input('instrument');
+            $user->lastname    = $request->input('lastname');
+            $user->save();
+            return redirect('/profil');
+        } else {
+            return view('/updateProfil', ['user' => $user]);
+        }
+
+    }
 }
