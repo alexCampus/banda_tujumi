@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('FO.layout.app')
 @section('imageUrl', $imageUrl)
 @section('content')
 	<div class="container">
@@ -19,10 +19,9 @@
 	                        </p>
 	                        <!-- Split button -->
 	                         <div class="btn-group">
-								<a type="button" class="btn btn-primary" href="/updateProfil">
-									Mettre à jour
-								</a>
-
+                                <a type="button" class="btn btn-primary" href="/updateProfil" style="border-radius: 20px 20px 20px">
+                                    Mettre à jour
+                                </a>
 	                        </div>
 	                    </div>
 	                </div>
@@ -61,12 +60,3 @@
 		</div>
 	</div>
 @endsection
-
-@section('script')
-	<script>
-        function getUpdatePath() {
-            window.location.replace('/updateProfil')
-        }
-	</script>
-@endsection
-

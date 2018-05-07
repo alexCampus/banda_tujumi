@@ -48,7 +48,7 @@ class EventController extends Controller
 		    
 
 
-		return view('agenda', array('calendar' => $calendar, 'imageUrl' => 'img/event.JPG'));
+		return view('FO.agenda', array('calendar' => $calendar, 'imageUrl' => 'img/event.JPG'));
 	}
 
 	public function formCreate() 
@@ -87,7 +87,7 @@ class EventController extends Controller
 		} else {
 			$bool = false;
 		}
-		return view('oneEvent', ['event' => $event, 'bool' => $bool, 'currentDate' => $currentDate]);
+		return view('FO.oneEvent', ['event' => $event, 'bool' => $bool, 'currentDate' => $currentDate]);
 	}
 
 	public function participe($id)

@@ -17,7 +17,7 @@ class ImagesController extends Controller
         foreach ($images as $key => $image) {
             $categorie[$image->categorie][$key] = $image;
         }
-       	return view('medias', ['imageUrl' => 'img/galerie-grp.jpg','categorie' => $categorie]);
+       	return view('FO.medias', ['imageUrl' => 'img/galerie-grp.jpg','categorie' => $categorie]);
     }
 
     public function uploadView()

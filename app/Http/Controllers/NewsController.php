@@ -25,11 +25,11 @@ class NewsController extends Controller
             $news = $newsModel->getAllNewsPublic();;
         }
 
-    	return view('actualites', ['news' => $news, 'imageUrl' => 'img/actu.jpg']);
+    	return view('FO.actualites', ['news' => $news, 'imageUrl' => 'img/actu.jpg']);
     }
 
     public function create() {
-    	return view('admin.createNews');
+    	return view('BO.News.createNews');
     }
 
     public function store(Request $request)
@@ -40,10 +40,10 @@ class NewsController extends Controller
         $this->news->date      = Carbon::now('Europe/London');
         $this->news->save();
 
-    	if ($request->get('isPrivate') === 1) {
-            MailGenerator::prestationMail($new, $request);
-        }
-    	return redirect('/actualites');
+//    	if ($request->get('isPrivate') === 1) {
+//            MailGenerator::prestationMail($new, $request);
+//        }
+    	return redirect('/admin/adminNews');
     }
 
     public function viewUpdate($id)
@@ -51,13 +51,12 @@ class NewsController extends Controller
 
         $news      = $this->news->getOneNews($id);
 
-        return view('updateNews', ['news' => $news]);
+        return view('BO.News.updateNews', ['news' => $news]);
     }
 
     public function update($id, Request $request) {
 
         $news      = $this->news->getOneNews($id);
-
         if ($request->input('title')) {
             $news->title = $request->input('title');
         }
@@ -65,11 +64,20 @@ class NewsController extends Controller
         if ($request->input('content')) {
             $news->content = $request->input('content');
         }
-        if ($request->get('isPrivate')) {
+        if (null !== $request->get('isPrivate')) {
             $news->isPrivate = $request->get('isPrivate');
         }
         $news->date = Carbon::now('Europe/London');
         $news->save();
-        return redirect('/actualites');
-    }        
+        return redirect('/admin/adminNews');
+    }
+
+
+    public function delete($id)
+    {
+        $new = $this->news->find($id);
+        $new->delete();
+
+        return redirect('admin/adminNews');
+    }
 }

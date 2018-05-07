@@ -30,12 +30,12 @@ class HomeController extends Controller
             $news = $newsModel->getAllNewsPublic();;
         }
 
-        return view('home', array('imageUrl' => 'img/3.jpg', 'news' =>$news->first()));
+        return view('FO.home', array('imageUrl' => 'img/3.jpg', 'news' =>$news->first()));
     }
 
     public function presentation()
     {
-        return view('about', array('imageUrl' => 'img/Tujumi.jpg'));
+        return view('FO.about', array('imageUrl' => 'img/Tujumi.jpg'));
     }
 
     public function indexPrestation()
@@ -51,7 +51,7 @@ class HomeController extends Controller
                                 ->orderBy('start_time', 'desc')
                                 ->get();
         
-        return view('/prestation', ['imageUrl' => 'img/event.JPG', "nextEvents" => $nextEvents, "pastEvents" => $pastEvents]);
+        return view('FO.prestation', ['imageUrl' => 'img/event.JPG', "nextEvents" => $nextEvents, "pastEvents" => $pastEvents]);
     }
 
     public function indexProfil()
@@ -59,7 +59,7 @@ class HomeController extends Controller
         $user   = Auth::user();
         $events = $user->events;
     
-        return view('/indexProfil', ['imageUrl' => 'img/event.JPG', 'user' => $user, 'events' => $events]);
+        return view('FO.indexProfil', ['imageUrl' => 'img/event.JPG', 'user' => $user, 'events' => $events]);
     }
 
     public function updateProfil(Request $request)
@@ -76,7 +76,7 @@ class HomeController extends Controller
             $user->save();
             return redirect('/profil');
         } else {
-            return view('/updateProfil', ['user' => $user]);
+            return view('FO.updateProfil', ['user' => $user]);
         }
 
     }

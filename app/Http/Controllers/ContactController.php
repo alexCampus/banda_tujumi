@@ -9,7 +9,7 @@ class ContactController extends Controller
 {
     public function index()
     {
-    	return view('contact', ['imageUrl' => 'img/contact.JPG']);
+    	return view('FO.contact', ['imageUrl' => 'img/contact.JPG']);
     }
 
     public function send(Request $request) {

@@ -11,6 +11,14 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            @if(Auth::check() && Auth::user()->adminLevel > 0)
+                <ul class="nav navbar-nav navbar-left">
+                    <li>
+                        <a href="/admin">Admin</a>
+                    </li>
+                </ul>
+            @endif
+
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <a href="/">Accueil</a>
@@ -35,11 +43,6 @@
                 <li>
                     <a href="/contact">Contact</a>
                 </li>
-                @if(Auth::check() && Auth::user()->adminLevel === 3)
-                    <li>
-                        <a href="/adminUser">Admin User</a>
-                    </li>
-                @endif
                 @if (Route::has('login'))
                     @if (Auth::check())
                         <li>

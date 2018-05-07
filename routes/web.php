@@ -40,11 +40,12 @@ Route::get('/prestation',                     'HomeController@indexPrestation');
 Route::get('/presentation',                   'HomeController@presentation');
 Route::get('/profil',                         'HomeController@indexProfil')->middleware('auth');
 Route::get('/updateProfil',                   'HomeController@updateProfil')->middleware('auth');
-Route::post('/updateProfil',                   'HomeController@updateProfil')->middleware('auth');
+Route::post('/updateProfil',                  'HomeController@updateProfil')->middleware('auth');
 
 Route::get('/actualites',                     'NewsController@index');
 Route::get('/createNews',                     'NewsController@create')->middleware('auth');
 Route::post('/createNews',                    'NewsController@store')->middleware('auth');
+Route::delete('/deleteNews/{id}',               'NewsController@delete')->where('id', '[0-9]+')->middleware('auth');
 Route::get('/updateNews/{id}',                'NewsController@viewUpdate')->where('id', '[0-9]+')->middleware('auth');
 Route::post('/updateNews/{id}',               'NewsController@update')->where('id', '[0-9]+')->middleware('auth');
 
@@ -61,7 +62,6 @@ Route::delete('/deleteEvent/{id}',            'EventController@delete')->where('
 Route::get('/contact',                        'ContactController@index');
 Route::post('/contact',                       'ContactController@send');
 
-Route::get('/adminUser',                      'AdminController@index')->middleware('auth');
 Route::get('/upGradeAdminLevel/{id}',         'AdminController@upGradeAdminLevel')->where('id', '[0-9]+')->middleware('auth');
 Route::get('/downGradeAdminLevel/{id}',       'AdminController@downGradeAdminLevel')->where('id', '[0-9]+')->middleware('auth');
 Route::post('/newUser',                       'AdminController@newUser')->middleware('auth');
@@ -72,4 +72,6 @@ Route::post('/uploadImages',                  'ImagesController@store')->middlew
 Route::get('/deleteImages',                   'ImagesController@deleteView')->middleware('auth');
 Route::post('/deleteImages/{id}',             'ImagesController@deleteStore')->where('id', '[0-9]+')->middleware('auth');
 
-
+Route::get('/admin',                           'AdminController@index')->middleware('auth');
+Route::get('/admin/adminUser',                 'AdminController@adminUser')->middleware('auth');
+Route::get('/admin/adminNews',                 'AdminController@adminNews')->middleware('auth');

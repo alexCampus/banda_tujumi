@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('FO.layout.app')
 @section('imageUrl', $imageUrl)
 @section('content')
 	  <!-- Main Content -->

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\News;
 use App\Services\MailGenerator;
 use Illuminate\Http\Request;
 use App\User;
@@ -13,13 +14,26 @@ class AdminController extends Controller
 {
     public function index()
     {
-    	if(!Auth::check() || Auth::user()->adminLevel != 3) 
+        return view('BO.index');
+    }
+
+    public function adminUser()
+    {
+    	if(!Auth::check() || Auth::user()->adminLevel <= 0)
 		{
 			return redirect('/');
 		}
     	$userModel = new User;
     	$users = $userModel->getAllUsers();
-    	return view('admin.adminUser', ['users' => $users]);
+    	return view('BO.Users.adminUser', ['users' => $users]);
+    }
+
+    public function adminNews()
+    {
+    	$newsModel = new News();
+    	$news = $newsModel->getAllNews();
+
+    	return view('BO.News.index', ['news' => $news]);
     }
 
     public function upGradeAdminLevel($id)
@@ -28,7 +42,7 @@ class AdminController extends Controller
         $user = User::find($id);
     	$user->adminLevel += 1;
     	$user->save();
-    	return redirect('/adminUser');
+    	return redirect('/admin/adminUser');
     }
 
     public function downGradeAdminLevel($id)
@@ -36,7 +50,7 @@ class AdminController extends Controller
     	$user = User::find($id);
     	$user->adminLevel -= 1;
     	$user->save();
-    	return redirect('/adminUser');
+    	return redirect('/admin/adminUser');
     }
 
     public function newUser(Request $request)
@@ -52,6 +66,6 @@ class AdminController extends Controller
 
         MailGenerator::generateToken($token, $id, $email);
 
-        return redirect('/adminUser');
+        return redirect('/admin/adminUser');
     }
 }
