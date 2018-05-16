@@ -45,8 +45,6 @@ class EventController extends Controller
 		            'selectable'  => false,
 		            'defaultView' => 'month',
 				]);  //add an array with addEvents
-		    
-
 
 		return view('FO.agenda', array('calendar' => $calendar, 'imageUrl' => 'img/event.JPG'));
 	}
@@ -80,35 +78,42 @@ class EventController extends Controller
 		$event       = $this->eventModel->getOneEvent($id);
 		$user        = Auth::user();
 		$currentDate = Carbon::now();
+
+
 		if ($event->users->contains($user))
 		{
-  			$bool = true;
+		    if ($user->events->first()->pivot->participe === 1) {
+                $bool = 1;
+            } else {
+		        $bool = 2;
+            }
 
 		} else {
-			$bool = false;
+			$bool = 0;
 		}
 		return view('FO.oneEvent', ['event' => $event, 'bool' => $bool, 'currentDate' => $currentDate]);
 	}
 
-	public function participe($id)
+	public function participe($id, Request $request)
 	{
 		$saveEvent = $this->eventModel->find($id);
 		$user      = Auth::user();
-		$saveEvent->users()->save($user);
+
+        $saveEvent->users()->save($user, ['participe' => $request->input('participe')]);
+
 		return redirect('/agenda/' . $id);
 	}
 
-	public function desinscription($id)
+	public function desinscription($id, Request $request)
 	{
 		$saveEvent = $this->eventModel->find($id);
 		$user      = Auth::user();
-		$saveEvent->users()->detach($user);
+		$saveEvent->users()->sync([$user->id =>['participe' => $request->input('participe')]]);
 		return redirect('/agenda/' . $id);
 	}
 
 	public function updateView($id)
 	{
-
 		$event = $this->eventModel->find($id);
 		
 		return view('createEvent', ['event' => $event]);

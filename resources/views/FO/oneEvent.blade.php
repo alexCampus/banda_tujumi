@@ -2,20 +2,35 @@
 @section('imageUrl', '../img/event.JPG')
 @section('content')
   <div class="container">
-  @if(Auth::check() && $bool === false)
+  @if(Auth::check() && $bool === 0)
     @if (!\Carbon\Carbon::parse($event->start_time)->lt($currentDate))
         <form method="POST" action="/{{$event->id}}/participe">
           {!! csrf_field() !!}
-          <button class="btn btn-default pull-right">S'Inscrire</button>
+          <input type="text" value='1' name="participe" hidden>
+          <button class="btn btn-default pull-right">Je Participe</button>
+        </form>
+        <form method="POST" action="/{{$event->id}}/participe">
+          {!! csrf_field() !!}
+          <input type="text" value='0' name="participe" hidden>
+          <button class="btn btn-default pull-right">Désolé j'ai piscine</button>
         </form>
     @endif
   @endif
 
-      @if(Auth::check() && $bool === true)
+      @if(Auth::check() && $bool === 1)
         @if (!\Carbon\Carbon::parse($event->start_time)->lt($currentDate))
           <form method="POST" action="/{{$event->id}}/desinscription">
             {!! csrf_field() !!}
+            <input type="text" value='0' name="participe" hidden>
             <button class="btn btn-default pull-right">Se Désinscrire</button>
+          </form>
+        @endif
+      @elseif(Auth::check() && $bool === 2)
+        @if (!\Carbon\Carbon::parse($event->start_time)->lt($currentDate))
+          <form method="POST" action="/{{$event->id}}/desinscription">
+            {!! csrf_field() !!}
+            <input type="text" value='1' name="participe" hidden>
+            <button class="btn btn-default pull-right">S'inscrire</button>
           </form>
         @endif
       @endif
@@ -39,7 +54,34 @@
     @if(Auth::check())
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">Liste des Inscrits</h3>   
+          <h3 class="panel-title">Liste des Participants</h3>
+        </div>
+        <div class="panel-body table-responsive">
+          <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Prénom</th>
+                  <th>Surnom</th>
+                  <th>Instrument</th>
+                </tr>
+              </thead>
+            @foreach($event->users as $user)
+                @if($user->pivot->participe === 1)
+                  <tbody>
+                    <tr>
+                      <td>{{$user->firstname}}</td>
+                      <td>{{$user->nickname}}</td>
+                      <td>{{$user->instrument}}</td>
+                    </tr>
+                  </tbody>
+                @endif
+              @endforeach
+          </table>	
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Liste des Non-Participants</h3>
         </div>
         <div class="panel-body table-responsive">
           <table class="table table-hover">
@@ -51,6 +93,7 @@
                 </tr>
               </thead>
             @foreach( $event->users as $user)
+                @if($user->pivot->participe === 0)
                   <tbody>
                     <tr>
                       <td>{{$user->firstname}}</td>
@@ -58,8 +101,9 @@
                       <td>{{$user->instrument}}</td>
                     </tr>
                   </tbody>
+                @endif
               @endforeach
-          </table>	
+          </table>
         </div>
       </div>
     @endif

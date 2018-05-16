@@ -29,7 +29,6 @@ class HomeController extends Controller
         } else {
             $news = $newsModel->getAllNewsPublic();;
         }
-
         return view('FO.home', array('imageUrl' => 'img/3.jpg', 'news' =>$news->first()));
     }
 
