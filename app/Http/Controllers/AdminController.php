@@ -36,6 +36,11 @@ class AdminController extends Controller
     	return view('BO.News.index', ['news' => $news]);
     }
 
+    public function adminPrestation()
+    {
+    	return view('BO.Event.index');
+    }
+
     public function upGradeAdminLevel($id)
     {
     	

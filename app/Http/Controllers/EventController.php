@@ -51,7 +51,7 @@ class EventController extends Controller
 
 	public function formCreate() 
 	{
-		return view('createEvent');
+		return view('BO.Event.createEvent');
 	}
 
 	public function store(Request $request) 

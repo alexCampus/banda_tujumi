@@ -75,3 +75,4 @@ Route::post('/deleteImages/{id}',             'ImagesController@deleteStore')->w
 Route::get('/admin',                           'AdminController@index')->middleware('auth');
 Route::get('/admin/adminUser',                 'AdminController@adminUser')->middleware('auth');
 Route::get('/admin/adminNews',                 'AdminController@adminNews')->middleware('auth');
+Route::get('/admin/adminPrestation',           'AdminController@adminPrestation')->middleware('auth');

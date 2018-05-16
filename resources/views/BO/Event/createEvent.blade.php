@@ -1,12 +1,13 @@
-@extends('FO.layout.app')
-@section('imageUrl', '../img/event.JPG')
+@extends('BO.layout.app')
 @section('content')
+    <div class="jumbotron">
+        <h1 style="text-align: center">Nouvelle Prestation</h1>
+    </div>
 	<div class="container">
     @if(isset($event))
        <h2 style="text-align: center">Mise à Jour Evènement</h2>
        <form name="updateEvent" method="POST" action="/updateEvent/{{$event->id}}">
     @else
-        <h2 style="text-align: center">Nouvel Evènement</h2>
 	   <form name="createEvent" method="POST" action="/createEvent">
     @endif
 	{!! csrf_field() !!}
@@ -25,7 +26,8 @@
             </div>
         </div>
 
-        <div class="row control-group"> 
+        <div class="row control-group" style="
+    margin-left: 0.3%;">
             	<label>Date et heure de début</label>
             <div class='input-group date col-sm-4' id='datetimepicker2'>
                 <input type='text' class="form-control" name="startTime" value="{{ isset($event->start_time) ? \Carbon\Carbon::parse($event->start_time)->format('d/m/Y \\à H:i') : ''}}" required />
@@ -53,7 +55,8 @@
                 });
             });
         </script>
-   		<div class="row control-group">
+   		<div class="row control-group" style="
+    margin-left: 0.3%;">
    			<select name="color" id="colorpicker" class="form-control required">
 		        <option value="#7bd148">Green</option>
 		        <option value="#5484ed">Bold blue</option>
@@ -74,7 +77,8 @@
         	 	$('#colorpicker').simplecolorpicker({theme: 'glyphicons'});
         	 });
         </script>
-        <div class="row control-group">
+        <div class="row control-group" style="
+    margin-left: 0.3%;">
             <div class='input-group date col-sm-4'>
                 <label for="sel1">Catégorie :</label>
                 <select name="categorie" class="form-control required">

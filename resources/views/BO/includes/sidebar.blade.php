@@ -13,7 +13,7 @@
             <a href="#">Média</a>
         </li>
         <li>
-            <a href="#">Prestation</a>
+            <a href="/admin/adminPrestation">Prestation</a>
         </li>
         <li>
             <a href="/admin/adminUser">Utilisateurs</a>
