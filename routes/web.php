@@ -72,6 +72,8 @@ Route::post('/uploadImages',                  'ImagesController@store')->middlew
 Route::get('/deleteImages',                   'ImagesController@deleteView')->middleware('auth');
 Route::post('/deleteImages/{id}',             'ImagesController@deleteStore')->where('id', '[0-9]+')->middleware('auth');
 
+Route::post('/comment/{id}',                  'CommentController@store')->where('id', '[0-9]+')->middleware('auth');
+
 Route::get('/admin',                           'AdminController@index')->middleware('auth');
 Route::get('/admin/adminUser',                 'AdminController@adminUser')->middleware('auth');
 Route::get('/admin/adminNews',                 'AdminController@adminNews')->middleware('auth');

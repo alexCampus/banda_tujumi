@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
-
+use App\Comment;
 use App\Services\MailGenerator;
 use Illuminate\Http\Request;
 use App\EventModel;
@@ -13,10 +12,12 @@ use Auth;
 class EventController extends Controller
 {
     protected $eventModel;
+    protected $commentModel;
 
-    public function __construct(EventModel $eventModel)
+    public function __construct(EventModel $eventModel, Comment $commentModel)
     {
-        $this->eventModel = $eventModel;
+        $this->eventModel   = $eventModel;
+        $this->commentModel = $commentModel;
     }
 
     public function index()
@@ -79,7 +80,7 @@ class EventController extends Controller
 		$event       = $this->eventModel->getOneEvent($id);
 		$user        = Auth::user();
 		$currentDate = Carbon::now();
-
+        $comments    =$this->commentModel->getCommentsByEvents($id);
 
 		if ($event->users->contains($user))
 		{
@@ -92,7 +93,9 @@ class EventController extends Controller
 		} else {
 			$bool = 0;
 		}
-		return view('FO.oneEvent', ['event' => $event, 'bool' => $bool, 'currentDate' => $currentDate]);
+
+
+		return view('FO.oneEvent', ['event' => $event, 'bool' => $bool, 'currentDate' => $currentDate, 'comments' => $comments]);
 	}
 
 	public function participe($id, Request $request)
@@ -142,5 +145,7 @@ class EventController extends Controller
       //  MailGenerator::prestationMail($event, $request);
         return redirect('/admin/adminPrestation');
 	}
+
+
 
 }

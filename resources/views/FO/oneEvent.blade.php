@@ -48,10 +48,6 @@
 
     </div>
 
-    {{--<div class="form-group">--}}
-      {{--<label for="comment">Comment:</label>--}}
-      {{--<textarea class="form-control" rows="5" id="comment"></textarea>--}}
-    {{--</div>--}}
     @if(Auth::check())
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -107,6 +103,25 @@
           </table>
         </div>
       </div>
-    @endif
+      <hr>
+      <form method="POST" action="/comment/{{$event->id}}">
+          {!! csrf_field() !!}
+          <div class="form-group">
+              <label for="comment">Laisser un Commentaire:</label>
+              <textarea class="form-control" rows="5" name="content"></textarea>
+          </div>
+          <input type="submit" value="Envoyer" class="btn btn-default">
+      </form>
+      <hr>
+      @foreach($comments as $comment)
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">{{$comment->user->nickname}} ({{$comment->user->firstname}}) a écrit :<span class="pull-right badge" style="opacity: 0.8">{{\Carbon\Carbon::parse($comment->date)->format('d/m/Y \\à H:i')}}</span></h3>
+
+              </div>
+              <div class="panel-body">{{$comment->content}}</div>
+          </div>
+      @endforeach
+      @endif
   </div>
 @endsection

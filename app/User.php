@@ -34,6 +34,11 @@ class User extends Authenticatable
         return $this->belongsToMany('App\EventModel')->withPivot('participe');
     }
 
+//    public function comments()
+//    {
+//        return $this->hasMany('App\Comment');
+//    }
+
     public function getAllUsers()
     {
         $users = User::all();

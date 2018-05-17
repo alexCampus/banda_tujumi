@@ -37,7 +37,7 @@ class NewsController extends Controller
     	$this->news->title     = $request->input('title');
         $this->news->content   = $request->input('content');
         $this->news->isPrivate = $request->get('isPrivate');
-        $this->news->date      = Carbon::now('Europe/London');
+        $this->news->date      = Carbon::now('Europe/Paris');
         $this->news->save();
 
 //    	if ($request->get('isPrivate') === 1) {
@@ -67,7 +67,7 @@ class NewsController extends Controller
         if (null !== $request->get('isPrivate')) {
             $news->isPrivate = $request->get('isPrivate');
         }
-        $news->date = Carbon::now('Europe/London');
+        $news->date = Carbon::now('Europe/Paris');
         $news->save();
         return redirect('/admin/adminNews');
     }
