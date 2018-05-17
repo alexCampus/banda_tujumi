@@ -6,7 +6,7 @@
         <h1 style="text-align: center">Prestations</h1>
         <ul class="nav nav-pills pull-right" >
             <li role="presentation">
-                <a href="/createEvent" class="btn btn-primary">Nouvelle Prestation</a>
+                <a href="/createEvent" class="btn btn-primary active">Nouvelle Prestation</a>
             </li>
         </ul>
     </div>
@@ -14,7 +14,7 @@
     @foreach($events as $event)
         <div class="col-lg-4" style="height: 500px; overflow: auto; border: #0d3625 solid 1px">
             <h2>{{ $event->title }}</h2>
-            {{--<span class="label label-default pull-right">{{ $event->isPrivate === 0 ? 'Public' : 'Privé' }}</span>--}}
+            <span class="label label-default pull-right">{{ $event->categorie }}</span>
             <p class='lead'>{!! $event->content !!}</p>
             <p class="lead">débute le : <span class="glyphicon glyphicon-time"></span> {{ date('d-m-Y à H:i', strtotime($event->start_time)) }}</p>
             <p class="lead">finie le : <span class="glyphicon glyphicon-time"></span> {{ date('d-m-Y à H:i', strtotime($event->end_time)) }}</p>

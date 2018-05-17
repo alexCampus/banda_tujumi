@@ -1,6 +1,8 @@
-@extends('FO.layout.app')
-@section('imageUrl', '../img/galerie-grp.jpg')
+@extends('BO.layout.app')
 @section('content')
+	<div class="jumbotron">
+		<h1 style="text-align: center">Médias</h1>
+	</div>
 	<div class="container">
 		<center><h1>Supprimer Images</h1></center>
 		<hr>

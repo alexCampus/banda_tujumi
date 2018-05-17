@@ -76,3 +76,4 @@ Route::get('/admin',                           'AdminController@index')->middlew
 Route::get('/admin/adminUser',                 'AdminController@adminUser')->middleware('auth');
 Route::get('/admin/adminNews',                 'AdminController@adminNews')->middleware('auth');
 Route::get('/admin/adminPrestation',           'AdminController@adminPrestation')->middleware('auth');
+Route::get('/admin/adminMedia',                'AdminController@adminMedia')->middleware('auth');

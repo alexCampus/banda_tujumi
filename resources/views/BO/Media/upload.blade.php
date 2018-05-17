@@ -1,6 +1,9 @@
-@extends('FO.layout.app')
-@section('imageUrl', '../img/galerie-grp.jpg')
+@extends('BO.layout.app')
 @section('content')
+	<div class="jumbotron">
+		<h1 style="text-align: center">Médias</h1>
+	</div>
+
 	<div class="container">
 		<div class="col-lg-offset-4 col-lg-4">
 			@if (session('status'))

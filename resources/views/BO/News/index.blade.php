@@ -6,7 +6,7 @@
         <h1 style="text-align: center">Actualités</h1>
         <ul class="nav nav-pills pull-right" >
             <li role="presentation">
-                <a href="/createNews" class="btn btn-primary">Nouvelle Actualité</a>
+                <a href="/createNews" class="btn btn-primary active">Nouvelle Actualité</a>
             </li>
         </ul>
     </div>

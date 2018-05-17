@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="{{ asset('css/jquery.simplecolorpicker-regularfont.css') }}">
 <link rel="stylesheet" href="{{ asset('css/jquery.simplecolorpicker-glyphicons.css') }}">
 <link rel="stylesheet" href="{{ asset('css/jquery.simplecolorpicker-fontawesome.css') }}">
+<link rel="stylesheet" href="{{ asset('css/blueimp-gallery.min.css') }}">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>

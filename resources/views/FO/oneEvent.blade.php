@@ -47,6 +47,11 @@
       </div>
 
     </div>
+
+    {{--<div class="form-group">--}}
+      {{--<label for="comment">Comment:</label>--}}
+      {{--<textarea class="form-control" rows="5" id="comment"></textarea>--}}
+    {{--</div>--}}
     @if(Auth::check())
       <div class="panel panel-default">
         <div class="panel-heading">

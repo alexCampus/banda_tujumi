@@ -10,7 +10,7 @@
             <a href="/admin/adminNews">Actualités</a>
         </li>
         <li>
-            <a href="#">Média</a>
+            <a href="/admin/adminMedia">Média</a>
         </li>
         <li>
             <a href="/admin/adminPrestation">Prestation</a>

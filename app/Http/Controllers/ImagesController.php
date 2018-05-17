@@ -28,7 +28,7 @@ class ImagesController extends Controller
         foreach ($images as $key => $image) {
             $categories[$image->categorie][$key] = $image;
         }
-    	return view('admin.upload', ['categories' => $categories]);
+    	return view('BO.Media.upload', ['categories' => $categories]);
     }
 
     public function deleteView()
@@ -40,7 +40,7 @@ class ImagesController extends Controller
         foreach ($images as $key => $image) {
             $categorie[$image->categorie][$key] = $image;
         }
-        return view('admin.deleteImages', ['categorie' => $categorie]);
+        return view('BO.Media.deleteImages', ['categorie' => $categorie]);
     }
 
     public function store(Request $request)
@@ -65,7 +65,7 @@ class ImagesController extends Controller
     		$img->categorie = $categorie;
     		$img->save();
 
-    		return redirect('/medias');
+    		return redirect('/admin/adminMedia');
     	}
     	//@TODO PREVOIR UNE ALERTE ET PR2CISER LA TAILLE MAX
         return redirect('/uploadImages')->with('status', 'Le fichier est supérieur à 3Mo.');

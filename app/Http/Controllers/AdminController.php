@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\EventModel;
+use App\Image;
 use App\News;
 use App\Services\MailGenerator;
 use Illuminate\Http\Request;
@@ -43,6 +44,19 @@ class AdminController extends Controller
         $events = $eventModel->getAllEvents();
 
     	return view('BO.Event.index', ['events' => $events]);
+    }
+
+    public function adminMedia()
+    {
+        $imgModel = new Image;
+
+        $images = $imgModel->getAllImages();
+        $categorie = [];
+        foreach ($images as $key => $image) {
+            $categorie[$image->categorie][$key] = $image;
+        }
+
+    	return view('BO.Media.index', ['categorie' => $categorie]);
     }
 
     public function upGradeAdminLevel($id)
