@@ -19,7 +19,8 @@ class EventController extends Controller
         $this->eventModel = $eventModel;
     }
 
-    public function index() {
+    public function index()
+    {
 		$eventsCalendar = [];
 		$events         = $this->eventModel->getAllEvents();
 
@@ -116,7 +117,7 @@ class EventController extends Controller
 	{
 		$event = $this->eventModel->find($id);
 		
-		return view('createEvent', ['event' => $event]);
+		return view('BO.Event.createEvent', ['event' => $event]);
 	}
 
 	public function update($id, Request $request)
@@ -131,7 +132,7 @@ class EventController extends Controller
 
 //        MailGenerator::prestationMail($event, $request);
 
-		return redirect('/agenda');
+		return redirect('/admin/adminPrestation');
 	}
 
 	public function delete($id, Request $request)
@@ -139,7 +140,7 @@ class EventController extends Controller
         $event = $this->eventModel->find($id);
         $event->delete();
       //  MailGenerator::prestationMail($event, $request);
-        return redirect('/agenda');
+        return redirect('/admin/adminPrestation');
 	}
 
 }

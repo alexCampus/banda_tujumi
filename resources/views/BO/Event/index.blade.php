@@ -11,23 +11,23 @@
         </ul>
     </div>
 
-    {{--@foreach($news as $new)--}}
-        {{--<div class="col-lg-4" style="height: 500px; overflow: auto; border: #0d3625 solid 1px">--}}
-            {{--<h2>{{ $new->title }}</h2>--}}
-            {{--<span class="label label-default pull-right">{{ $new->isPrivate === 0 ? 'Public' : 'Privé' }}</span>--}}
-            {{--<p class='lead'>{!! $new->content !!}</p>--}}
-            {{--<p class="lead">posté le : <span class="glyphicon glyphicon-time"></span> {{ date('d-m-Y', strtotime($new->date)) }}</p>--}}
-            {{--@if (Auth::check() && Auth::user()->adminLevel > 0)--}}
-                {{--<div class="pull-right">--}}
-                    {{--<a href="/updateNews/{{$new->id}}" class="btn btn-warning">Mettre a Jour</a>--}}
-                    {{--<form method="POST" action='/deleteNews/{{$new->id}}'>--}}
-                        {{--<input name="_method" type="hidden" value="DELETE">--}}
-                        {{--{!! csrf_field() !!}--}}
-                        {{--<input class="btn btn-danger" type="submit" value="Supprimer">--}}
-                    {{--</form>--}}
-                    {{--<a href="/deleteNews/{{$new->id}}" style="color:#a8534b"><i class="fa fa-minus-circle" aria-hidden="true">Supprimer</i></a>--}}
-                {{--</div>--}}
-            {{--@endif--}}
-        {{--</div>--}}
-    {{--@endforeach--}}
+    @foreach($events as $event)
+        <div class="col-lg-4" style="height: 500px; overflow: auto; border: #0d3625 solid 1px">
+            <h2>{{ $event->title }}</h2>
+            {{--<span class="label label-default pull-right">{{ $event->isPrivate === 0 ? 'Public' : 'Privé' }}</span>--}}
+            <p class='lead'>{!! $event->content !!}</p>
+            <p class="lead">débute le : <span class="glyphicon glyphicon-time"></span> {{ date('d-m-Y à H:i', strtotime($event->start_time)) }}</p>
+            <p class="lead">finie le : <span class="glyphicon glyphicon-time"></span> {{ date('d-m-Y à H:i', strtotime($event->end_time)) }}</p>
+            @if (Auth::check() && Auth::user()->adminLevel > 0)
+                <div class="pull-right">
+                    <a href="/updateEvent/{{$event->id}}" class="btn btn-warning">Mettre a Jour</a>
+                    <form method="POST" action='/deleteEvent/{{$event->id}}'>
+                        <input name="_method" type="hidden" value="DELETE">
+                        {!! csrf_field() !!}
+                        <input class="btn btn-danger" type="submit" value="Supprimer">
+                    </form>
+                </div>
+            @endif
+        </div>
+    @endforeach
 @endsection

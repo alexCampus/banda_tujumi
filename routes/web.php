@@ -45,7 +45,7 @@ Route::post('/updateProfil',                  'HomeController@updateProfil')->mi
 Route::get('/actualites',                     'NewsController@index');
 Route::get('/createNews',                     'NewsController@create')->middleware('auth');
 Route::post('/createNews',                    'NewsController@store')->middleware('auth');
-Route::delete('/deleteNews/{id}',               'NewsController@delete')->where('id', '[0-9]+')->middleware('auth');
+Route::delete('/deleteNews/{id}',             'NewsController@delete')->where('id', '[0-9]+')->middleware('auth');
 Route::get('/updateNews/{id}',                'NewsController@viewUpdate')->where('id', '[0-9]+')->middleware('auth');
 Route::post('/updateNews/{id}',               'NewsController@update')->where('id', '[0-9]+')->middleware('auth');
 

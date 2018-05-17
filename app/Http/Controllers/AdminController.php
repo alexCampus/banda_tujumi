@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\EventModel;
 use App\News;
 use App\Services\MailGenerator;
 use Illuminate\Http\Request;
@@ -38,7 +39,10 @@ class AdminController extends Controller
 
     public function adminPrestation()
     {
-    	return view('BO.Event.index');
+        $eventModel = new EventModel();
+        $events = $eventModel->getAllEvents();
+
+    	return view('BO.Event.index', ['events' => $events]);
     }
 
     public function upGradeAdminLevel($id)

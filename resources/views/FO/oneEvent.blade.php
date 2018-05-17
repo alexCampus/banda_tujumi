@@ -12,7 +12,7 @@
         <form method="POST" action="/{{$event->id}}/participe">
           {!! csrf_field() !!}
           <input type="text" value='0' name="participe" hidden>
-          <button class="btn btn-default pull-right">Désolé j'ai piscine</button>
+          <button class="btn btn-default pull-right">Je ne participe pas</button>
         </form>
     @endif
   @endif
@@ -42,10 +42,6 @@
          {{$event->content}}
       </div>
       <div class="panel-footer">
-      @if (Auth::check() && Auth::user()->adminLevel > 0)
-        <a class="pull-right" href="/updateEvent/{{$event->id}}" style="color:#a8534b"><i class="fa fa-plus" aria-hidden="true"> 
-        Mettre a Jour</i></a>
-      @endif
           <small>Heure de début :</small> le {{ \Carbon\Carbon::parse($event->start_time)->format('d/m/Y \\à H:i')}}<br>
           <small>Heure de Fin :</small> le {{ \Carbon\Carbon::parse($event->end_time)->format('d/m/Y \\à H:i')}}<br>
       </div>
