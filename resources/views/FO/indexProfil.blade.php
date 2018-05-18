@@ -41,18 +41,21 @@
 				    <tbody>
 					@foreach($events as $event)
 	        			@if (!\Carbon\Carbon::parse($event->start_time)->lt(\Carbon\Carbon::now()))
-						    <tr onclick="window.document.location='/agenda/{{$event->id}}';">
-						        <td>{{$event->title}}</td>
-						        <td>{{\Carbon\Carbon::parse($event->start_time)->format('d/m/Y')}}</td>
-						        <td>
-						        	@if(Auth::check())
-								          <form method="POST" action="/{{$event->id}}/desinscription">
-								            {!! csrf_field() !!}
-								            <button class="btn-sm btn-default pull-right">Se Désinscrire</button>
-								          </form>
-								        @endif
-								</td>
-					    	</tr>
+							@if($event->pivot->participe === 1)
+								<tr onclick="window.document.location='/agenda/{{$event->id}}';">
+									<td>{{$event->title}}</td>
+									<td>{{\Carbon\Carbon::parse($event->start_time)->format('d/m/Y')}}</td>
+									<td>
+										@if(Auth::check())
+											  <form method="POST" action="/{{$event->id}}/desinscription">
+												{!! csrf_field() !!}
+												<input type="text" value='0' name="participe" hidden>
+												<button class="btn-sm btn-default pull-right">Se Désinscrire</button>
+											  </form>
+											@endif
+									</td>
+								</tr>
+							@endif
 						@endif
 					@endforeach
 			    	</tbody>

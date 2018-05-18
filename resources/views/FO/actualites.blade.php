@@ -3,11 +3,6 @@
 @section('content')
 	<div class="container">
 		<h2 style="text-align: center">Actualités</h2>
-		@if (Auth::check() && Auth::user()->adminLevel > 0)
-			<ul class="nav nav-pills pull-right" >
-	  			<li role="presentation" ><a href="/createNews"><i class="fa fa-plus" aria-hidden="true"> News</i></a></li>
-			</ul>
-		@endif
 		<hr>
 		<article>
             <div class="row">
@@ -17,9 +12,6 @@
 						<h2>{{ $new->title }}</h2>
                         <p class='lead'>{!! $new->content !!}</p>
 						<p class="lead">posté le : <span class="glyphicon glyphicon-time"></span> {{ date('d-m-Y', strtotime($new->date)) }}</p>
-						@if (Auth::check() && Auth::user()->adminLevel > 0)
-							<a href="/updateNews/{{$new->id}}" style="color:#a8534b"><i class="fa fa-plus" aria-hidden="true"> Mettre a Jour</i></a></li>
-						@endif
 						<hr>
 					@endforeach
                     </div>

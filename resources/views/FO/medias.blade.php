@@ -3,10 +3,6 @@
 @section('content')
 	<div class="container">
 		<h2 style="text-align: center">Médias</h2>
-		@if (Auth::check() && Auth::user()->adminLevel > 0)
-			<a class="pull-right" href="/uploadImages" style="color:#a8534b"><i class="fa fa-plus" aria-hidden="true"> Upload</i></a><br>
-			<a class="pull-right" href="/deleteImages" style="color:#a8534b"><i class="fa fa-plus" aria-hidden="true"> Supprimer Images</i></a>
-		@endif
 		<hr>
 
 		<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
