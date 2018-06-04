@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Image;
 
 class ImagesController extends Controller
 {
+    private $imgModel;
+
+    public function __construct(Image $imgModel)
+    {
+        $this->imgModel = $imgModel;
+    }
+
     public function index()
     {
-    	$imgModel = new Image;
-    	
-    	$images = $imgModel->getAllImages();
+        $images    = $this->imgModel->getAllImages();
         $categorie = [];
         foreach ($images as $key => $image) {
             $categorie[$image->categorie][$key] = $image;
@@ -22,8 +27,7 @@ class ImagesController extends Controller
 
     public function uploadView()
     {
-        $imgModel = new Image();
-        $images   = $imgModel->getAllImages();
+        $images     = $this->imgModel->getAllImages();
         $categories = [];
         foreach ($images as $key => $image) {
             $categories[$image->categorie][$key] = $image;
@@ -33,9 +37,7 @@ class ImagesController extends Controller
 
     public function deleteView()
     {
-        $imgModel = new Image;
-        
-        $images = $imgModel->getAllImages();
+        $images = $this->imgModel->getAllImages();
         $categorie = [];
         foreach ($images as $key => $image) {
             $categorie[$image->categorie][$key] = $image;
@@ -45,7 +47,6 @@ class ImagesController extends Controller
 
     public function store(Request $request)
     {
-
         if ($request->categorieInput === '' && $request->categorieSelect != '') {
             $categorie = $request->categorieSelect;
         } else if ($request->categorieSelect === '' && $request->categorieInput != ''){
@@ -58,12 +59,10 @@ class ImagesController extends Controller
     		$request->file('image')->storeAs('public/' . $categorie, $request->file('image')->getClientOriginalName());
     		$url = Storage::url($request->file('image')->getClientOriginalName());
 
-    		$img = new Image;
-
-    		$img->name      = $request->file('image')->getClientOriginalName();
-    		$img->title     = $request->input('title');
-    		$img->categorie = $categorie;
-    		$img->save();
+    		$this->imgModel->name      = $request->file('image')->getClientOriginalName();
+            $this->imgModel->title     = $request->input('title');
+            $this->imgModel->categorie = $categorie;
+            $this->imgModel->save();
 
     		return redirect('/admin/adminMedia');
     	}

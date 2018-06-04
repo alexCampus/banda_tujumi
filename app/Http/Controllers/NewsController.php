@@ -10,19 +10,18 @@ use Auth;
 
 class NewsController extends Controller
 {
-    private $news;
+    private $newsModel;
 
     public function __construct(News $news)
     {
-        $this->news = $news;
+        $this->newsModel = $news;
     }
 
     public function index() {
-    	$newsModel =  new News;
     	if (Auth::check()) {
-    	    $news = $newsModel->getAllNews();
+    	    $news = $this->newsModel->getAllNews();
         } else {
-            $news = $newsModel->getAllNewsPublic();;
+            $news = $this->newsModel->getAllNewsPublic();;
         }
 
     	return view('FO.actualites', ['news' => $news, 'imageUrl' => 'img/actu.jpg']);
@@ -34,29 +33,28 @@ class NewsController extends Controller
 
     public function store(Request $request)
     {
-    	$this->news->title     = $request->input('title');
-        $this->news->content   = $request->input('content');
-        $this->news->isPrivate = $request->get('isPrivate');
-        $this->news->date      = Carbon::now('Europe/Paris');
-        $this->news->save();
+    	$this->newsModel->title     = $request->input('title');
+        $this->newsModel->content   = $request->input('content');
+        $this->newsModel->isPrivate = $request->get('isPrivate');
+        $this->newsModel->date      = Carbon::now('Europe/Paris');
+        $this->newsModel->save();
 
-//    	if ($request->get('isPrivate') === 1) {
-//            MailGenerator::prestationMail($new, $request);
+//    	if ($request->get('isPrivate') === '1') {
+//            MailGenerator::prestationMail($this->newsModel, $request);
 //        }
     	return redirect('/admin/adminNews');
     }
 
     public function viewUpdate($id)
     {
-
-        $news      = $this->news->getOneNews($id);
+        $news      = $this->newsModel->getOneNews($id);
 
         return view('BO.News.updateNews', ['news' => $news]);
     }
 
-    public function update($id, Request $request) {
-
-        $news      = $this->news->getOneNews($id);
+    public function update($id, Request $request)
+    {
+        $news      = $this->newsModel->getOneNews($id);
         if ($request->input('title')) {
             $news->title = $request->input('title');
         }
@@ -75,7 +73,7 @@ class NewsController extends Controller
 
     public function delete($id)
     {
-        $new = $this->news->find($id);
+        $new = $this->newsModel->find($id);
         $new->delete();
 
         return redirect('admin/adminNews');

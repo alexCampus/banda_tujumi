@@ -10,17 +10,6 @@ use Carbon\Carbon;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $newsModel =  new News;
@@ -39,7 +28,7 @@ class HomeController extends Controller
 
     public function indexPrestation()
     {
-        $today      = Carbon::now();
+        $today          = Carbon::now();
         $nextEvents     = EventModel::where('categorie', '=', 'prestation')
                                 ->where('start_time',  '>', Carbon::parse($today)->format('Y-m-d H:m:s'))
                                 ->orderBy('start_time', 'desc')

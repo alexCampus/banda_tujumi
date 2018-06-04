@@ -100,12 +100,5 @@
             </div>
         </div>
     </form>
-    @if(isset($event))
-        <form method="POST" action='/deleteEvent/{{$event->id}}'>
-            <input name="_method" type="hidden" value="DELETE">
-            {!! csrf_field() !!}
-            <input class="btn btn-danger" type="submit" value="Supprimer l'Evènement">
-        </form>
-    @endif
 </div>
 @endsection

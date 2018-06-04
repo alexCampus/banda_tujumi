@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
-use App\Services\MailGenerator;
-use Illuminate\Http\Request;
 use App\EventModel;
-use Carbon\Carbon;
 use Auth;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
@@ -66,34 +65,39 @@ class EventController extends Controller
         $this->eventModel->start_time      = Carbon::createFromFormat('d/m/Y H:i', $request->input('startTime'))->format('Y-m-d H:i');
         $this->eventModel->end_time        = Carbon::createFromFormat('d/m/Y H:i', $request->input('endTime'))->format('Y-m-d H:i');
         $this->eventModel->backgroundColor = $request->input('color');
-        $this->eventModel->categorie 	 	= $request->input('categorie');
+        $this->eventModel->categorie       = $request->input('categorie');
 
     	$this->eventModel->save();
 
     //	MailGenerator::prestationMail($this->eventModel, $request);
 
-		return redirect('/agenda');
+		return redirect('/admin/adminPrestation');
 	}
 
 	public function show($id)
 	{
-		$event       = $this->eventModel->getOneEvent($id);
-		$user        = Auth::user();
-		$currentDate = Carbon::now();
-        $comments    =$this->commentModel->getCommentsByEvents($id);
-
-		if ($event->users->contains($user))
-		{
-		    if ($user->events->first()->pivot->participe === 1) {
-                $bool = 1;
+        $event       = $this->eventModel->getOneEvent($id);
+        $user        = Auth::user();
+        $currentDate = Carbon::now();
+        $comments    = $this->commentModel->getCommentsByEvents($id);
+        if ($event != null) {
+            if ($event->users->contains($user))
+            {
+                foreach ($user->events as $userEvents) {
+                    if ($userEvents->id === intval($id)) {
+                        if ($userEvents->pivot->participe === 1) {
+                            $bool = 1;
+                        } else {
+                            $bool = 2;
+                        }
+                    }
+                }
             } else {
-		        $bool = 2;
+                $bool = 0;
             }
-
-		} else {
-			$bool = 0;
-		}
-
+        } else {
+            return redirect('/agenda');
+        }
 
 		return view('FO.oneEvent', ['event' => $event, 'bool' => $bool, 'currentDate' => $currentDate, 'comments' => $comments]);
 	}
@@ -112,7 +116,7 @@ class EventController extends Controller
 	{
 		$saveEvent = $this->eventModel->find($id);
 		$user      = Auth::user();
-		$saveEvent->users()->sync([$user->id =>['participe' => $request->input('participe')]]);
+		$saveEvent->users()->updateExistingPivot($user->id,['participe' => $request->input('participe')]);
 		return redirect('/agenda/' . $id);
 	}
 
@@ -125,12 +129,12 @@ class EventController extends Controller
 
 	public function update($id, Request $request)
 	{
-		$event = $this->eventModel->find($id);
-		$event->title   = $request->input('title');
-    	$event->content = $request->input('content');
-    	$event->start_time      = Carbon::createFromFormat('d/m/Y H:i', $request->input('startTime'))->format('Y-m-d H:i');
-    	$event->end_time        = Carbon::createFromFormat('d/m/Y H:i', $request->input('endTime'))->format('Y-m-d H:i');
-    	$event->backgroundColor = $request->input('color');
+        $event                  = $this->eventModel->find($id);
+        $event->title           = $request->input('title');
+        $event->content         = $request->input('content');
+        $event->start_time      = Carbon::createFromFormat('d/m/Y H:i', $request->input('startTime'))->format('Y-m-d H:i');
+        $event->end_time        = Carbon::createFromFormat('d/m/Y H:i', $request->input('endTime'))->format('Y-m-d H:i');
+        $event->backgroundColor = $request->input('color');
     	$event->save();
 
 //        MailGenerator::prestationMail($event, $request);
@@ -138,14 +142,14 @@ class EventController extends Controller
 		return redirect('/admin/adminPrestation');
 	}
 
-	public function delete($id, Request $request)
+	public function delete($id)
 	{
         $event = $this->eventModel->find($id);
-        $event->delete();
+        if ($event != null) {
+            $event->delete();
+        }
       //  MailGenerator::prestationMail($event, $request);
         return redirect('/admin/adminPrestation');
 	}
-
-
 
 }

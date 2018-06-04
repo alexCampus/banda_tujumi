@@ -31,9 +31,12 @@ class MailGenerator
             $typeEmail = 'email.newActualite';
             $url       = "http://localhost:8000/actualites/";
             $users     = User::all();
+        } elseif ($request->path() === 'comment/' . $event->id) {
+            $subject   = 'Un nouveau commentaire vient d\'etre posté sur le site banda tujumi';
+            $typeEmail = 'email.newActualite';
+            $url       = "http://localhost:8000/agenda/" . $event->id;
+            $users     = User::getAllAdminUsers();
         }
-
-
 
         if ($users) {
             foreach($users as $user) {

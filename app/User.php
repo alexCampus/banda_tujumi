@@ -44,4 +44,10 @@ class User extends Authenticatable
         $users = User::all();
         return $users;
     }
+
+    static function getAllAdminUsers()
+    {
+        $users = User::where('adminLevel', '>' , '0')->get();
+        return $users;
+    }
 }

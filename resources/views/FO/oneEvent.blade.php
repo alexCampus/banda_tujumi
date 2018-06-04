@@ -108,7 +108,7 @@
           {!! csrf_field() !!}
           <div class="form-group">
               <label for="comment">Laisser un Commentaire:</label>
-              <textarea class="form-control" rows="5" name="content"></textarea>
+              <textarea class="form-control" rows="5" name="content" required></textarea>
           </div>
           <input type="submit" value="Envoyer" class="btn btn-default">
       </form>

@@ -61,7 +61,7 @@ class EventModel extends model implements \MaddHatter\LaravelFullcalendar\Event
 
     public function getAllEvents()
     {
-        $events = EventModel::all();
+        $events = EventModel::all()->sortByDesc("start_time");
         return $events;
     }
 

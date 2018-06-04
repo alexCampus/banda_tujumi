@@ -15,7 +15,7 @@
 		</div>
 		<div class="row"> 
 			@foreach($categorie as $key => $cat)
-				<div id="links_{{ $key }}" class="col-md-4">
+				<div id="links_{{ $key }}" class="col-md-4" style="height: 250px">
 					<h2>{{ $key }} </h2>
 					<button type="button" class="btn btn-default btn-sm" style="border-radius: 50px 50px 50px">
 			          <span class="glyphicon glyphicon-picture"></span>
