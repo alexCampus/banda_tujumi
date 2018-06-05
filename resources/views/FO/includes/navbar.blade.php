@@ -60,7 +60,6 @@
                             
                     @endif
                 @endif
-                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->

@@ -19,7 +19,7 @@
             <p class="lead">posté le : <span class="glyphicon glyphicon-time"></span> {{ date('d-m-Y', strtotime($new->date)) }}</p>
             @if (Auth::check() && Auth::user()->adminLevel > 0)
                 <div class="pull-right">
-                    <a href="/updateNews/{{$new->id}}" class="btn btn-warning">Mettre a Jour</i></a>
+                    <a href="/updateNews/{{$new->id}}" class="btn btn-warning">Mettre a Jour</a>
                     <form method="POST" action='/deleteNews/{{$new->id}}'>
                         <input name="_method" type="hidden" value="DELETE">
                         {!! csrf_field() !!}

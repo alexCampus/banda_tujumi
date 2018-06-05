@@ -70,7 +70,7 @@ class MailGenerator
         {
             $message->from('admin@lelabobois.fr', 'Banda Tujumi');
             $message->to($email);
-            $message->subject('Un nouvel utilisateur vient de creer son compte');
+            $message->subject('Un nouvel utilisateur vient de créer son compte');
         });
     }
 }

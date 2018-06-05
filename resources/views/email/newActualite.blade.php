@@ -122,20 +122,20 @@ p, ul, ol {
 
                         <h2>Bonjour,</h2>
 
-                        <p>Nous venons d'ajouter une nouvelle actualites.<br> N'hesitez pas à venir la onsulter.</p>
+                        <p>Nous venons d'ajouter une nouvelle actualité.<br> N'hésitez pas à venir la consulter.</p>
 
                         <table>
                             <tr>
                                 <td align="center">
                                     <p>
-                                        <a href="{{$url}}" class="button">Actualite</a>
+                                        <a href="{{$url}}" class="button">Actualité</a>
                                     </p>
                                 </td>
                             </tr>
                         </table>
 
 
-                        <p><em>– Merci</em></p>
+                        <p><em>Merci</em></p>
 
                     </td>
                 </tr>
