@@ -8,8 +8,8 @@
             <div class="col-lg-6 col-lg-offset-2  col-md-10 col-md-offset-1 ">
                 <div class="post-preview">
                     <h2>La Banda Tujumi</h2>
-                    <p>La Banda Tujumi est une association loi de 1901 de percussions afro-brésilienne (appelée plus communément  batucada de samba-reggae). Les cours sont dispensés les mardi soir au sein des locaux du studio KNT situé à Echirolles (38).</p>
-                    <p>Cette batucada a le souhait de développer les rythmes brésiliens dans toute l’agglomération Grenobloise et plus largement encore. Elle propose donc son atelier samba-reggae, unique sur l’agglo, tous les lundis mais également, elle vous propose d’animer vos évènements sur scène ou pour des défilés, carnavals…</p>
+                    <p>La Banda Tujumi est une association loi de 1901 de percussions afro-brésilienne (appelée plus communément  batucada de samba-reggae). Les cours sont dispensés les mardis soir au sein des locaux du studio KNT situé à Echirolles (38).</p>
+                    <p>Cette batucada a le souhait de développer les rythmes brésiliens dans toute l’agglomération Grenobloise et plus largement encore. Elle propose donc son atelier samba-reggae, unique sur l’agglo, tous les mardis mais également, elle vous propose d’animer vos évènements sur scène ou pour des défilés, carnavals…</p>
                     <p>Enfin, des stages peuvent être proposés pour des échanges avec d’autres groupes de percussions mais aussi pour des initiations pour des MJC, comités d’entreprises….</p>
 
                     <div class="full" class="content-area">
