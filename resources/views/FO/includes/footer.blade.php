@@ -13,11 +13,11 @@
                                 </span>
                             </a>
                         </li>
-                        <li>
-                            <a href="http://www.saint-martin-le-vinoux.fr/">
-                                <img style="cursor: pointer" width="53px" class="img-circle" src="./../img/logoStMartinPetit.jpg" alt="logo de la ville de Saint Martin Le Vinoux">
-                            </a>
-                        </li>
+                        {{--<li>--}}
+                            {{--<a href="http://knt.fr/">--}}
+                                {{--<img style="cursor: pointer" width="53px" class="img-circle" src="./../img/logoStMartinPetit.jpg" alt="logo de la ville de Saint Martin Le Vinoux">--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
                     </ul>
                     <p class="copyright text-muted">Copyright &copy; Alex De Pembroke 2016</p>
                 </div>

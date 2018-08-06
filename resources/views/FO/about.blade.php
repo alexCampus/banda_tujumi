@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <p>Jubiraci MACHADO SANTOS, de son surnom de capoeriste Bira Saci est né à Salvador de Bahia en 1977. Petit-fils du créateur de la Capoeira Régionale Mestre Bimba et fils de Marinalva Machado, Mesta de Samba de Roda, Bira Saci a baigné depuis tout petit dans l’univers traditionnel de la culture Afro-brésilienne. Il commence à 5 ans la capoeira. Formé par son oncle Mestre Nenel, il obtient son diplôme de professeur de Capoeira en 2006.</p>
-                <p>Musicalement, Bira à 8 ans, commence à jouer des percussions pour la pratique de la capoeira, la samba et au cours des cérémonies traditionnelles. C’est à 12 ans qu’il entre dans le groupe Olodum et y jouera durant de nombreuses années. Bira Saci arrive en 2007 en France et en 2012, il monte la Banda Tujumi à l’aide de l’association Geracao Capoeira. Aujourd’hui, la Banda Tujumi évolue de manière indépendante sur l’agglomération Grenobloise et notamment sur Saint Martin le Vinoux, commune avec qui elle a établi un fort partenariat</p>
+                <p>Musicalement, Bira à 8 ans, commence à jouer des percussions pour la pratique de la capoeira, la samba et au cours des cérémonies traditionnelles. C’est à 12 ans qu’il entre dans le groupe Olodum et y jouera durant de nombreuses années. Bira Saci arrive en 2007 en France et en 2012, il monte la Banda Tujumi à l’aide de l’association Geracao Capoeira. Aujourd’hui, la Banda Tujumi évolue de manière indépendante sur l’agglomération Grenobloise et dispense des cours les mardis soirs au <a href="http://knt.fr/">Studio KNT</a>  à Echirolles.</p>
             </div>
         </div>
     </div>

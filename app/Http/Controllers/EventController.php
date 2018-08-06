@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Services\MailGenerator;
 use App\EventModel;
 use Auth;
 use Carbon\Carbon;
