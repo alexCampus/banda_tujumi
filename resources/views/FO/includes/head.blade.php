@@ -45,7 +45,9 @@
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
-
+<meta property="og:url" content="https://www.banda-tujumi.fr" />
+<meta property="og:title" content="Banda Tujumi" />
+<meta property="og:image" content="{{asset('img/3.jpg')}}" />
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
