@@ -4,8 +4,12 @@
 @yield('script')
 <!-- Menu Toggle Script -->
 <script>
-    $("#menu-toggle").click(function(e) {
+    $("#btn-wrapper").click(function(e) {
         e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
+        if ($('#wrapper').hasClass('toggled')) {
+            $("#wrapper").removeClass('toggled');
+        } else {
+            $("#wrapper").toggleClass("toggled");
+        }
     });
 </script>

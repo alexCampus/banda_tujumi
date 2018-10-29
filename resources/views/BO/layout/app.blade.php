@@ -7,7 +7,9 @@
 </head>
 
 <body>
-<div id="wrapper" class="toggled">
+<button id="btn-wrapper" class="btn"><i class="fa fa-bars"></i></button>
+<div id="wrapper" class="">
+
   @include('BO.includes.sidebar')
 
   @yield('content')

@@ -98,6 +98,17 @@ body {
   background: none;
 }
 
+#btn-wrapper {
+  z-index: 2000;
+  position: absolute;
+  color: #3b7c41;
+  background-color: #eeeeee;
+}
+
+.sidebar-nav {
+  margin-top: 15%;
+}
+
 @media(min-width:768px) {
   #wrapper {
     padding-left: 0;
