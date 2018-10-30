@@ -41,6 +41,8 @@ Route::get('/presentation',                   'HomeController@presentation');
 Route::get('/profil',                         'HomeController@indexProfil')->middleware('auth');
 Route::get('/updateProfil',                   'HomeController@updateProfil')->middleware('auth');
 Route::post('/updateProfil',                  'HomeController@updateProfil')->middleware('auth');
+Route::get('/deleteProfil',                   'HomeController@deleteProfil')->middleware('auth');
+
 
 Route::get('/actualites',                     'NewsController@index');
 Route::get('/createNews',                     'NewsController@create')->middleware('auth');

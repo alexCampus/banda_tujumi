@@ -92,6 +92,24 @@
                                     @endif
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label for="emailRadio" class="col-md-4 control-label">Gestion E-mails</label>
+
+                                <div class="col-md-6">
+                                    <div class="radio">
+                                        <label style="font-weight: 100; font-size: medium;"><input type="radio" name="emailRadio" value="0" {{Auth::user()->adminLevel >= 0 ? 'checked' : ''}}>Recevoir tous les e-mails</label>
+                                    </div>
+                                    <div class="radio">
+                                        <label style="font-weight: 100; font-size: medium;"><input type="radio" name="emailRadio" value="-1" {{Auth::user()->adminLevel === -1 ? 'checked' : ''}}>Recevoir que les actualités</label>
+                                    </div>
+                                    <div class="radio disabled">
+                                        <label style="font-weight: 100; font-size: medium;"><input type="radio" name="emailRadio" value="-10" {{Auth::user()->adminLevel < -2 ? 'checked' : ''}}>Recevoir aucun e-mail</label>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">

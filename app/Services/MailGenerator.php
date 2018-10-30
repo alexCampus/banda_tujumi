@@ -15,7 +15,7 @@ class MailGenerator
             $subject   = 'Une nouvelle prestation vient d\'etre mise sur le site banda tujumi';
             $typeEmail = 'email.newPrestation';
             $url       = "http://localhost:8000/agenda/" . $event->id;
-            $users     = User::all();
+            $users     = User::where('adminLevel', '>=', 0)->get();
         } elseif ($request->path() === 'updateEvent/' . $event->id) {
             $subject   = 'Une prestation vient d\'etre mise a jour sur le site banda tujumi';
             $typeEmail = 'email.updatePrestation';
@@ -30,7 +30,7 @@ class MailGenerator
             $subject   = 'Une nouvelle actu vient d\'etre mise sur le site banda tujumi';
             $typeEmail = 'email.newActualite';
             $url       = "http://localhost:8000/actualites/";
-            $users     = User::all();
+            $users     = User::where('adminLevel', '>=', -1)->get();
         } elseif ($request->path() === 'comment/' . $event->id) {
             $subject   = 'Un nouveau commentaire vient d\'etre posté sur le site banda tujumi';
             $typeEmail = 'email.newActualite';

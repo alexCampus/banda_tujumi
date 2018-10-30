@@ -9,6 +9,11 @@
                     <hr class="small">
                     <span class="subheading">Le meilleur du Samba Reggae sur Grenoble</span>
                 </div>
+                @if(Session::has('success'))
+                    <div class="alert alert-error">
+                        {{Session::get('success')}}
+                    </div>
+                @endif
             </div>
         </div>
     </div>

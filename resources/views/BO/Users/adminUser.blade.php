@@ -24,12 +24,12 @@
             @foreach($users as $user)
                 <tbody>
                 <tr>
-                    <td>{{$user->lastname}}</td>
-                    <td>{{$user->firstname}}</td>
-                    <td>{{$user->nickname}}</td>
+                    <td>{{ ucfirst(strtolower($user->lastname)) }}</td>
+                    <td>{{ ucfirst(strtolower($user->firstname)) }}</td>
+                    <td>{{ ucfirst(strtolower($user->nickname)) }}</td>
                     <td>{{$user->email}}</td>
                     <td>0{{$user->phonenumber}}</td>
-                    <td>{{$user->instrument}}</td>
+                    <td>{{ ucfirst(strtolower($user->instrument)) }}</td>
                     <td>{{$user->adminLevel}}</td>
                     @if(Auth::user()->adminLevel === 3)
                         <td><a href="/upGradeAdminLevel/{{$user->id}}"><i class="fa fa-plus" aria-hidden="true"></i></a></td>

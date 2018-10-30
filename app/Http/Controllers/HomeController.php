@@ -61,11 +61,20 @@ class HomeController extends Controller
             $user->phonenumber = $request->input('phonenumber');
             $user->instrument  = $request->input('instrument');
             $user->lastname    = $request->input('lastname');
+            $user->adminLevel  = $request->input('emailRadio');
             $user->save();
             return redirect('/profil');
         } else {
             return view('FO.updateProfil', ['user' => $user]);
         }
+
+    }
+
+    public function deleteProfil()
+    {
+        $user = Auth::user();
+        $user->delete();
+        return redirect('/')->with('success', 'Votre compte a bien été supprimé.'); ;
 
     }
 }

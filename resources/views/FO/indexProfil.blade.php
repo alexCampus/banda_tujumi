@@ -19,10 +19,15 @@
 	                        </p>
 	                        <!-- Split button -->
 	                         <div class="btn-group">
-                                <a type="button" class="btn btn-primary" href="/updateProfil" style="border-radius: 20px 20px 20px">
+								<a type="button" class="btn btn-primary" href="/updateProfil" style="border-radius: 20px 20px 20px">
                                     Mettre à jour
                                 </a>
 	                        </div>
+							<div class="btn-group">
+								<a type="button" class="btn-sm btn-danger" onclick="return confirm('Attention votre compte sera définitivement supprimé. Etes vous sûr de vouloir supprimer votre compte ?')" href="/deleteProfil" style="margin-top:1%;border-radius: 20px 20px 20px">
+									Supprimer mon profil
+								</a>
+							</div>
 	                    </div>
 	                </div>
 	            </div>
