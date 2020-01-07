@@ -9,7 +9,9 @@ class ContactController extends Controller
 {
     public function index()
     {
-    	return view('FO.contact', ['imageUrl' => 'img/contact.JPG']);
+    	$num1 = rand(0,10);
+	$num2 = rand(0,10);
+    	return view('FO.contact', ['imageUrl' => 'img/contact.JPG', 'num1' => $num1, 'num2' => $num2]);
     }
 
     public function send(Request $request) {
