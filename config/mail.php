@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => 'admin@lelabobois.fr',
+        'address' => 'alex.depem@gmail.com',
         'name' => 'Banda Tujumi',
     ],
 
