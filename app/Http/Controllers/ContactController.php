@@ -38,7 +38,7 @@ class ContactController extends Controller
                 'email.sendContact',
                 ['name' => $name, "phoneNumber" => $phoneNumber, 'email' => $email, 'msg' => $msg],
                 function ($message) {
-                    $message->from('admin@lelabobois.fr', 'Banda Tujumi');
+                    $message->from('alex.depem@gmail.com', 'Banda Tujumi');
                     $message->to('alex.depem@gmail.com');
                     $message->subject('Prise de contact Banda Tujumi');
                 }
