@@ -39,9 +39,9 @@ class NewsController extends Controller
         $this->newsModel->date      = Carbon::now('Europe/Paris');
         $this->newsModel->save();
 
-//    	if ($request->get('isPrivate') === '1') {
-//            MailGenerator::prestationMail($this->newsModel, $request);
-//        }
+    	//if ($request->get('isPrivate') === '1') {
+            MailGenerator::prestationMail($this->newsModel, $request);
+        //}
     	return redirect('/admin/adminNews');
     }
 

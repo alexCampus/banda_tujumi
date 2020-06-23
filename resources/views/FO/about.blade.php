@@ -1,4 +1,5 @@
 @extends('FO.layout.app')
+@section('title', 'Présentation de la batucada')
 @section('imageUrl', $imageUrl)
 @section('content')
 	 <!-- Main Content -->

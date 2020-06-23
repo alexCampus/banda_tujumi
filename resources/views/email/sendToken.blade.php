@@ -124,7 +124,7 @@ p, ul, ol {
 
                         <p>Nous sommes heureux de vous accueillir au sein de notre Banda. Cet email va vous permettre de créer votre compte sur le site internet. Vous pourrez ensuite vous inscrire aux différents évenements directement sur le site via l'agenda.</p>
                         <p><strong>Attention</strong></p>
-                        <p>Ce lien est à usage unique en cas de souci merci de remplir le formulaire<a href="http://localhost:8000/contact"> ICI</a></p>
+                        <p>Ce lien est à usage unique en cas de souci merci de remplir le formulaire<a href="https://banda-tujumi.fr/contact"> ICI</a></p>
 
                         <table>
                             <tr>

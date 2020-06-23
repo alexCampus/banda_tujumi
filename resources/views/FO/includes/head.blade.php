@@ -1,12 +1,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
+<meta name="description" content="Banda Tujumi est un groupe de batucada de samba reggae sur Grenoble (38 Isère)">
 <meta name="author" content="Alexandre De Pembroke">
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<title>Banda Tujumi</title>
+<title>@yield('title')</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="{{ asset('/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -55,7 +55,7 @@
 <script type="text/javascript" src="{{ asset('js/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('js/fr.js') }}"></script>
 
-
+@yield('cssOptionnel')
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
