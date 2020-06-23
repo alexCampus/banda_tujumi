@@ -42,7 +42,7 @@ class MailGenerator
             foreach($users as $user) {
                 $email = $user->email;
                 Mail::send($typeEmail, ['url' => $url], function ($message) use ($email, $subject) {
-                    $message->from('admin@lelabobois.fr', 'Banda Tujumi');
+                    $message->from('alex.depem@gmail.com', 'Banda Tujumi');
                     $message->to($email);
                     $message->subject($subject);
                 });
@@ -56,7 +56,7 @@ class MailGenerator
 
         Mail::send('email.sendToken', ['url' => $url], function($message) use ($email)
         {
-            $message->from('admin@lelabobois.fr', 'Banda Tujumi');
+            $message->from('alex.depem@gmail.com', 'Banda Tujumi');
             $message->to($email);
             $message->subject('Creation de votre compte sur le site banda tujumi');
         });
@@ -68,7 +68,7 @@ class MailGenerator
 
         Mail::send('email.newUser',['firstname' => $firstname, 'lastname' => $lastname], function($message) use ($email)
         {
-            $message->from('alex.depem@gmail.fr', 'Banda Tujumi');
+            $message->from('alex.depem@gmail.com', 'Banda Tujumi');
             $message->to($email);
             $message->subject('Un nouvel utilisateur vient de créer son compte');
         });
