@@ -68,7 +68,7 @@ class MailGenerator
 
         Mail::send('email.newUser',['firstname' => $firstname, 'lastname' => $lastname], function($message) use ($email)
         {
-            $message->from('admin@lelabobois.fr', 'Banda Tujumi');
+            $message->from('alex.depem@gmail.fr', 'Banda Tujumi');
             $message->to($email);
             $message->subject('Un nouvel utilisateur vient de créer son compte');
         });
