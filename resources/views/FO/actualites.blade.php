@@ -1,4 +1,5 @@
 @extends('FO.layout.app')
+@section('title', 'Actualités Samba Reggae Grenoble')
 @section('imageUrl', $imageUrl)
 @section('content')
 	<div class="container">

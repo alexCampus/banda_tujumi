@@ -1,6 +1,9 @@
 @extends('FO.layout.app')
 @section('title', 'Contacter Batucada Samba Reggae Grenoble')
 @section('imageUrl', $imageUrl)
+@section('cssOptionnel')
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+@endsection
 @section('content')
     <!-- Main Content -->
     <div class="container">
@@ -48,15 +51,7 @@
                         </div>
                         <br> 
 			<div class="row control-group">
-			    <div class="col-xs-3">
-                                <p><span id="num1">{{$num1}}</span> + <span id="num2">{{$num2}}</span> = </p>
-                            </div>
-                            <div class="form-group col-xs-9 floating-label-form-group controls">
-                                <label>Somme</label>
-                                <input type="numeric" class="form-control" placeholder="Somme" id="captcha" name="captcha" required
-                                       data-validation-required-message="Veuillez entrer la somme.">
-                                <p class="help-block text-danger" id="captchaError"></p>
-                            </div>
+			    <div class="g-recaptcha" data-sitekey="6Ldp0dEUAAAAADxvvRBWOEN5sr9IHaSRym6_ADli"></div>
                         </div>
 		    
                         <div id="success"></div>
@@ -72,8 +67,4 @@
     </div>
 
     <hr>
-@endsection
-
-@section('script')
-    <script src="{{ asset('js/captcha.js')}}"></script>
 @endsection

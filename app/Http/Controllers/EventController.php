@@ -70,7 +70,7 @@ class EventController extends Controller
 
     	$this->eventModel->save();
 
-    //	MailGenerator::prestationMail($this->eventModel, $request);
+    	MailGenerator::prestationMail($this->eventModel, $request);
 
 		return redirect('/admin/adminPrestation');
 	}
@@ -138,18 +138,18 @@ class EventController extends Controller
         $event->backgroundColor = $request->input('color');
     	$event->save();
 
-//        MailGenerator::prestationMail($event, $request);
+        MailGenerator::prestationMail($event, $request);
 
 		return redirect('/admin/adminPrestation');
 	}
 
-	public function delete($id)
+	public function delete($id, Request $request)
 	{
         $event = $this->eventModel->find($id);
         if ($event != null) {
             $event->delete();
         }
-      //  MailGenerator::prestationMail($event, $request);
+        MailGenerator::prestationMail($event, $request);
         return redirect('/admin/adminPrestation');
 	}
 

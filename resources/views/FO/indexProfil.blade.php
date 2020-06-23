@@ -1,4 +1,5 @@
 @extends('FO.layout.app')
+@section('title', 'Mon profil de Batucada')
 @section('imageUrl', $imageUrl)
 @section('content')
 	<div class="container">

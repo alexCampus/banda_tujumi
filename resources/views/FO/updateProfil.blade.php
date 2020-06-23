@@ -1,4 +1,5 @@
 @extends('FO.layout.app')
+@section('title', 'Mon Profil')
 @section('imageUrl', 'img/accueil.jpg')
 @section('content')
     <div class="container">
