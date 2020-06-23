@@ -4,15 +4,8 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/campus-digital-grenoble/laravel-serve-custom-ini"
-        }
-    ],
     "require": {
         "php": ">=5.6.4",
-        "barryvdh/laravel-ide-helper": "2.5-dev",
         "caouecs/laravel-lang": "~3.0",
         "guzzlehttp/guzzle": "~5.3|~6.0",
         "laravel/framework": "5.3.*",
@@ -23,8 +16,7 @@
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~5.0",
         "symfony/css-selector": "3.1.*",
-        "symfony/dom-crawler": "3.1.*",
-        "mmieluch/laravel-serve-custom-ini": "dev-master"
+        "symfony/dom-crawler": "3.1.*"
     },
     "autoload": {
         "classmap": [

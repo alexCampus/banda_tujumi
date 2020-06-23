@@ -166,7 +166,7 @@ return [
         /*
          * Package for customer php.ini
          */
-        Mmieluch\LaravelServeCustomIni\LaravelServeCustomIniProvider::class,
+       // Mmieluch\LaravelServeCustomIni\LaravelServeCustomIniProvider::class,
         MaddHatter\LaravelFullcalendar\ServiceProvider::class,
 
         /*
