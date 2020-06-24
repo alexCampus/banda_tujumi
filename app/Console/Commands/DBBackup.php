@@ -37,7 +37,7 @@ class DBBackup extends Command
      */
     public function handle()
     {
-        $command   = 'rm /var/www/html/banda_tujumi/storage/app/Laravel/* ; rclone purge gdrive:backup_banda_tujumi; php artisan backup:run --only-db; rclone copy /var/www/html/banda_tujumi/storage/app/Laravel/ gdrive:backup_banda_tujumi';
+        $command   = 'rm /var/www/html/banda_tujumi/storage/app/Laravel/* ; rclone delete gdrive:backup_banda_tujumi; php artisan backup:run --only-db; rclone copy /var/www/html/banda_tujumi/storage/app/Laravel/ gdrive:backup_banda_tujumi';
         $returnVar = null;
         $output    = null;
         exec($command, $output, $returnVar);
