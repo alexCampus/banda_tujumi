@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Banda Tujumi est un groupe de batucada de samba reggae sur Grenoble (38 Isère)">
+<meta name="description" content="Banda Tujumi est un groupe de batucada de samba reggae sur Grenoble (38 Is&egrave;re)">
 <meta name="author" content="Alexandre De Pembroke">
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
