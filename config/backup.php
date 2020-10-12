@@ -139,8 +139,8 @@ return [
             'to' => 'alex.depem@hotmail.fr',
 
             'from' => [
-                'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-                'name' => env('MAIL_FROM_NAME', 'Example'),
+                'address' => 'alex.depem@gmail.com',
+                'name' =>'Banda Tujumi',
             ],
         ],
 
