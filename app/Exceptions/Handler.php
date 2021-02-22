@@ -38,7 +38,7 @@ class Handler extends ExceptionHandler
             // it will have access to the $error that we are passing below
             Mail::send('email.exception', ['error' => $exception], function ($m) {
                 $m->from('alex.depem@gmail.com', 'Banda Tujumi');
-                $m->to('alex.depem@hotmail.fr', 'Banda Tujumi');
+                $m->to('alexandre@depembroke.fr', 'Banda Tujumi');
                 $m->subject('Error site Banda Tujumi');
             });
         }
